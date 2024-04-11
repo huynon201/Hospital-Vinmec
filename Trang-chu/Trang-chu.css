@@ -35,28 +35,42 @@
     border-radius: 10px;
     
 }
+
 #trang-chu a {
     text-decoration: none;
 }
+
 .header {
     height: 7vh;
-    width: 100vw;
+    width: 87vw;
     display: grid;
     grid-template-columns: auto auto;
     border-bottom: 1px solid #ccc;
 
 }
 .search {
-    display: flex; /* Sử dụng flexbox */
-    align-items: center; /* Căn giữa theo chiều dọc */
+    display: flex;
+    align-items: center;
 }
 .search input {
     height: 60%;
-    width: 29%;
+    width: 40%;
     border: 1px solid black;
     border-radius: 20px;
     margin-left: 3vw;
 }
 .login-register {
-    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align items to the right */
+    margin-right: 30px;
+}
+button {
+    height: 60%;
+    min-width: 15%;
+    width: auto;
+    background-color: #A5F3FC;
+    margin-right: 20px;
+    border-radius: 5px;
+    font-size: 1rem;
 }
