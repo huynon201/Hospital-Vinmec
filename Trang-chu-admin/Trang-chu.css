@@ -1,0 +1,138 @@
+*{
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.viewport {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.menu {
+    height: 100vh;
+    width: 13vw;
+    background-color: #A5F3FC;
+    
+
+}
+.logo-name {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#logo {
+    height: 10vh;
+    width: 10vw;
+    display: block;
+    
+}
+#trang-chu {
+    height: 60px;
+    width: 90%;
+    margin-top: 30px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    
+}
+#danh-muc {
+    height: 60px;
+    width: 90%;
+    margin-top: 10px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    
+}
+#vat-tu {
+    height: 60px;
+    width: 90%;
+    margin-top: 10px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    
+}
+#tai-khoan {
+    height: 60px;
+    width: 90%;
+    margin-top: 10px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    
+}
+#nhan-vien {
+    height: 60px;
+    width: 90%;
+    margin-top: 10px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    
+}
+#phong-ban {
+    height: 60px;
+    width: 90%;
+    margin-top: 10px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    
+}
+#phieu-xuat {
+    height: 60px;
+    width: 90%;
+    margin-top: 10px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    
+}
+#bao-cao {
+    height: 60px;
+    width: 90%;
+    margin-top: 10px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    
+}
+a {
+    text-decoration: none;
+}
+
+.header {
+    height: 7vh;
+    width: 87vw;
+    display: grid;
+    grid-template-columns: auto auto;
+    border-bottom: 1px solid #ccc;
+
+}
+.search {
+    display: flex;
+    align-items: center;
+}
+.search input {
+    height: 60%;
+    width: 40%;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-left: 3vw;
+}
+.login-register {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align items to the right */
+    margin-right: 30px;
+}
+button {
+    height: 60%;
+    min-width: 15%;
+    width: auto;
+    background-color: #A5F3FC;
+    margin-right: 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+}
