@@ -31,15 +31,8 @@
     margin-right: 10px;
     font-size: 30px;
 }
-.logo-name button {
-    height: 60%;
-    min-width: 15%;
-    width: auto;
-    background-color: #1DCBDF;
-    margin-right: 20px;
-    border-radius: 5px;
-    font-size: 1.3rem;
-    font-weight: 300;
+.menu button {
+    margin-right: 10px;
     box-shadow: 3px 3px 5px 0px #a5a5a5;
 }
 #trang-chu {
