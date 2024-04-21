@@ -8,28 +8,61 @@
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="login.js">
+    <script>
+        $(document).ready(function(){
+            // $(".btn-login").click(function(){
+                $(".btn-login").click(function(e){
+                e.preventDefault();
+                var name = $("#name").val();
+                var password = $("#password").val();
+                var email = $("#email").val();
+                var phone = $("#phone").val();
+                var error = "";
+                if(name ==='' || password===''|| email===''|| phone===''){
+                    error = 'Các ô không được để trống';
+                }else if(/\d/.test(name)){
+                    error = 'tên đăng nhập không được chứa số';
+                } else if(password.length < 8 || !/[A-Z]/.test(password) || !/\W/.test(password) || !/\d/.test(password)){
+                    error = "Mật khẩu it nhất 8 ký tự,bao gồm chữ hoa, kí tự đặc biệt và số";
+                } else if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+                    error = 'Email không đúng định dạng.';
+                } else if(!/^\d+$/.test(phone)){
+                    error = 'Số điện thoại chỉ được nhập số.';
+                }
+                $("#error").text(error);
+                if(error === ""){
+                    alert("đăng nhập thành công!")
+                } 
+                })
+            // });
+            
+        })
+
+    </script>
  
     
 
 </head>
 <body>
     <div class="body_login">
-        <form action="">
+        <form action="" id="form">
             <div class="btn_close">
                 <button><i class="bi bi-x-lg"></i></button>
             </div>
             <h1>Đăng nhập</h1>
             <div class="input_box">
                 <input type="text" placeholder="Tên đăng nhập">
+                <span id="error" style="color: red;"></span>
             </div>
             <div class="input_box">
                 <input type="text" placeholder="Mật khẩu">
                 <i class="bi bi-eye-slash"></i>
+                <span id="error" style="color: red;"></span>
             </div>
             <div class="text_forget_pass"><a href="">Quên mật khẩu?</a>
             </div>
             <div class="btn_login">
-                <button>Đăng nhập</button>
+                <button class="btn-login">Đăng nhập</button>
             </div>
             <div class="text_register">Bạn chưa có tài khoản?<a href="file:///D:/Workspace/HTML/Web-Vinmec/Register/Register.html"> đăng ký!</a></div>
             </div>
