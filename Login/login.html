@@ -8,35 +8,41 @@
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="login.js">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function(){
-            // $(".btn-login").click(function(){
-                $(".btn-login").click(function(e){
-                e.preventDefault();
-                var name = $("#name").val();
-                var password = $("#password").val();
-                var email = $("#email").val();
-                var phone = $("#phone").val();
-                var error = "";
-                if(name ==='' || password===''|| email===''|| phone===''){
-                    error = 'Các ô không được để trống';
-                }else if(/\d/.test(name)){
-                    error = 'tên đăng nhập không được chứa số';
-                } else if(password.length < 8 || !/[A-Z]/.test(password) || !/\W/.test(password) || !/\d/.test(password)){
-                    error = "Mật khẩu it nhất 8 ký tự,bao gồm chữ hoa, kí tự đặc biệt và số";
-                } else if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-                    error = 'Email không đúng định dạng.';
-                } else if(!/^\d+$/.test(phone)){
-                    error = 'Số điện thoại chỉ được nhập số.';
-                }
-                $("#error").text(error);
-                if(error === ""){
-                    alert("đăng nhập thành công!")
-                } 
-                })
-            // });
-            
-        })
+        $(".btn-login").click(function(e){
+            e.preventDefault();
+            var name = $("#name").val();
+            var password = $("#password").val();
+            var errorName = "";
+            var errorPassword = "";
+
+            if(name === ''){
+                errorName = 'Tên đăng nhập không được để trống';
+                $(".error-name").text(errorName);
+            } else if(/\d/.test(name)){
+                errorName = 'Tên đăng nhập không được chứa số';
+                $(".error-name").text(errorName);
+            } else {
+                $(".error-name").text("");
+            }
+
+            if(password === ''){
+                errorPassword = 'Mật khẩu không được để trống';
+                $(".error-password").text(errorPassword);
+            } else if(password.length < 8 || !/[A-Z]/.test(password) || !/\W/.test(password) || !/\d/.test(password)){
+                errorPassword = "Mật khẩu cần ít nhất 8 ký tự, bao gồm chữ hoa, kí tự đặc biệt và số";
+                $(".error-password").text(errorPassword);
+            } else {
+                $(".error-password").text("");
+            }
+
+            if(name === "huydat" && password === "Huydat201!"){
+                window.location.href = "file:///D:/Workspace/HTML/Web-Vinmec/Trang-chu-admin/Trangchu.html";
+            }
+        });
+    });
 
     </script>
  
@@ -51,13 +57,13 @@
             </div>
             <h1>Đăng nhập</h1>
             <div class="input_box">
-                <input type="text" placeholder="Tên đăng nhập">
-                <span id="error" style="color: red;"></span>
+                <input id="name" type="text" placeholder="Tên đăng nhập">
+                <span class="error-name error" style="color: red;"></span>
             </div>
             <div class="input_box">
-                <input type="text" placeholder="Mật khẩu">
+                <input id="password" type="password" placeholder="Mật khẩu">
                 <i class="bi bi-eye-slash"></i>
-                <span id="error" style="color: red;"></span>
+                <span class="error-password error" style="color: red;"></span>
             </div>
             <div class="text_forget_pass"><a href="">Quên mật khẩu?</a>
             </div>
