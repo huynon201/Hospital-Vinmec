@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="android-icon-192x192.webp">
+    <link rel="icon" type="image/x-icon" href="../Assets/logo/android-icon-192x192.webp">
     <title>Đăng nhập | Vinmec</title>
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
@@ -42,7 +42,11 @@
                 window.location.href = "file:///D:/Workspace/HTML/Web-Vinmec/Trang-chu-admin/Trangchu.html";
             }
         });
+        $("btn-close").click(function(){
+            window.location.href = "file:///D:/Workspace/HTML/Web-Vinmec/Trang-chu/Trang-chu.html";
+        })
     });
+
 
     </script>
  
@@ -53,7 +57,7 @@
     <div class="body_login">
         <form action="" id="form">
             <div class="btn_close">
-                <button><i class="bi bi-x-lg"></i></button>
+                <button class="btn_close"><i class="bi bi-x-lg"></i></button>
             </div>
             <h1>Đăng nhập</h1>
             <div class="input_box">
