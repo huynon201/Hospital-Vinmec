@@ -17,15 +17,12 @@ body{
     border-radius: 10px;
     background: white;
 }
-.btn_close button{
+.btn_close{
     margin-top: 15px;
-    margin-left: 510px;
-    border: none;
-   background-color: white;
+    margin-left: 505px;
 }
-.btn_close button i{
+.btn_close a i{
     font-size: 20px;
-  
 }
 .body_login h1{
     font-size: 36px;
@@ -54,10 +51,10 @@ input:hover{
     top: 50%;
     transform: translateY(-50%);
 }
-.text_forget_pass a{
+.text_remember_login {
     text-decoration: none;
     color: gray;
-    padding-left: 70%;
+    padding-left: 10%;
 }
 .btn_login{
     margin-top: 35px;
