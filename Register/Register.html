@@ -3,45 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="..//Assets/logo/android-icon-192x192.webp">
+    <link rel="icon" type="image/x-icon" href="../Assets/logo/android-icon-192x192.webp">
     <title>Đăng kí | Vinmec</title>
     <link rel="stylesheet" href="Register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="login.js">
- 
-    
-
 </head>
 <body>
     <div class="body_login">
-        <form action="">
+        <form action="" id="conten">
             <div class="btn_close">
-                <button><i class="bi bi-x-lg"></i></button>
-            </div>
+                <a href="../Trang-chu/Trang-chu.html">
+                     <i class="bi bi-x-lg"></i>
+                 </a>
+             </div>
             <h1>Đăng ký</h1>
             <div class="input_box">
-                <input type="text" placeholder="Tên đăng nhập">
+                <input type="text" id="username" placeholder="Tên đăng nhập">
             </div>
             <div class="input_box">
-                <input type="text" placeholder="Mật khẩu">
-                <i class="bi bi-eye-slash"></i>
+                <input type="password" id="password" placeholder="Mật khẩu">
+                <i class="bi bi-eye-slash toggle-password"></i>
             </div>
             <div class="input_box">
-                <input type="text" placeholder="Xác nhận mật khẩu">
-                <i class="bi bi-eye-slash"></i>
+                <input type="password" id="confirm_password" placeholder="Xác nhận mật khẩu">
+                <i class="bi bi-eye-slash toggle-password"></i>
             </div>
             <div class="input_box">
-                <input id="input_adress" type="text" placeholder="Địa chỉ">
+                <input id="address" type="text" placeholder="Địa chỉ">
             </div>
             <div class="input_box">
-                <input type="text" placeholder="Số điện thoại">
+                <input type="text" id="phone" placeholder="Số điện thoại">
             </div>
+            <span class="errors" style="color: red; position: relative; left: 45px;"></span>
             <div class="btn_register">
-                <button>Đăng ký</button>
+                <button type="submit">Đăng ký</button>
             </div>
-            <div class="text_register">Bạn đã có tài khoản?<a href="file:///D:/Workspace/HTML/Web-Vinmec/Login/login.html"> đăng nhập!</a></div>
-            </div>
+            <div class="text_register">Bạn đã có tài khoản?<a href="../Login/login.html"> đăng nhập!</a></div>
         </form>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".toggle-password").click(function() {
+                $(this).toggleClass("bi-eye bi-eye-slash");
+                var input = $($(this).siblings("input")[0]);
+                if (input.attr("type") === "password") {
+                    input.attr("type", "text");
+                } else {
+                    input.attr("type", "password");
+                }
+            });
+
+            $("#conten").submit(function(e){
+                e.preventDefault();
+                var error = "";
+                var username = $("#username").val().trim();
+                var password = $("#password").val();
+                var confirm_password = $("#confirm_password").val();
+                var address = $("#address").val();
+                var phone = $("#phone").val();
+
+                if(username === "" || password === "" || confirm_password === "" || address === "" || phone === ""){
+                    error = "Không được để trống";
+                } else if(/\d/.test(username)){
+                    error = "Tên đăng nhập không được chứa số";
+                } else if(password.length < 8 || !/\W/.test(password) || !/[A-Z]/.test(password) || !/\d/.test(password)){
+                    error = "Mật khẩu không đúng định dạng";    
+                } else if(password !== confirm_password){
+                    error = "Mật khẩu không khớp";    
+                } else if(!/^\d+$/.test(phone)){
+                    error = "Số điện thoại chỉ được nhập số";
+                }
+                $(".errors").text(error);
+                if(error === ""){
+                    alert("Đăng ký thành công!");
+                    window.location.href = "../Login/login.html";
+                }
+            });
+        });
+    </script>
 </body>
-</html>    
+</html>
