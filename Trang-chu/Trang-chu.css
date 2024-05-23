@@ -1,125 +1,229 @@
-*{
-    border: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+/* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
-.viewport {
-    display: grid;
-    grid-template-columns: auto auto;
+body {
+  min-height: 100vh;
+  background: #eef5fe;
 }
-.menu {
-    height: 100vh;
-    width: 16vw;
-    background-color: #A5F3FC;
-    
+/* Pre css */
+.flex {
+  display: flex;
+  align-items: center;
+}
+.nav-image {
+  display: flex;
+  min-width: 55px;
+  justify-content: center;
+}
+.nav-image img {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: white;
+  box-shadow: 0 6px 12px -2px #32325d40, 0 3px 7px -3px #0000004d;
+}
 
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 270px;
+  background: #a5f3fc;
+  padding: 15px 10px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+.sidebar.close {
+  width: calc(55px + 20px);
+}
+.logo-items {
+  gap: 8px;
 }
 .logo-name {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  font-size: 22px;
+  color: #333;
+  font-weight: 500px;
+  transition: all 0.3s ease;
 }
-#logo {
-    height: 13vh;
-    width: 10vw;
+.sidebar.close .logo-name,
+.sidebar.close #lock-icon,
+.sidebar.close #sidebar-close {
+  opacity: 0;
+  pointer-events: none;
+}
+#lock-icon,
+#sidebar-close {
+  padding: 10px;
+  color: #4070f4;
+  font-size: 25px;
+  cursor: pointer;
+  margin-left: -4px;
+  transition: all 0.3s ease;
+}
+#sidebar-close {
+  display: none;
+  color: #333;
+}
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 40px;
+  overflow-y: auto;
+  height: calc(100% - 82px);
+}
+.menu-container::-webkit-scrollbar {
+  display: none;
+}
+.menu-title {
+  position: relative;
+  height: 50px;
+  width: 55px;
+}
+.menu-title .title {
+  margin-left: 15px;
+  transition: all 0.3s ease;
+}
+.sidebar.close .title {
+  opacity: 0;
+}
+.menu-title .line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 3px;
+  width: 20px;
+  border-radius: 25px;
+  background: #aaa;
+  transition: all 0.3s ease;
+}
+.menu-title .line {
+  opacity: 0;
+}
+.sidebar.close .line {
+  opacity: 1;
+}
+.item {
+  list-style: none;
+}
+.trang-chu {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px -2px #32325d40, 0 3px 7px -3px #0000004d;
+}
+.link {
+  text-decoration: none;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  color: #707070;
+}
+.link:hover {
+  color: #fff;
+  background-color: #4070f4;
+}
+.link span {
+  white-space: nowrap;
+}
+.link i {
+  height: 50px;
+  min-width: 55px;
+  display: flex;
+  font-size: 22px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.sidebar-profile {
+  padding-top: 15px;
+  margin-top: 15px;
+  gap: 15px;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
+.sidebar-profile .name {
+  font-size: 18px;
+  color: #333;
+}
+.sidebar-profile .email {
+  font-size: 15px;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  max-width: 500px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 60%;
+  transform: translateX(-50%);
+  background: #fff;
+  padding: 10px 20px;
+  border-radius: 0 0 8px 8px;
+  justify-content: space-between;
+  box-shadow: 0 6px 12px -2px #32325d40, 0 3px 7px -3px #0000004d;
+}
+#sidebar-open {
+  font-size: 30px;
+  color: #333;
+  cursor: pointer;
+  margin-right: 20px;
+  display: none;
+}
+.search-box {
+  height: 46px;
+  max-width: 500px;
+  width: 100%;
+  border: 1px solid #aaa;
+  outline: none;
+  border-radius: 8px;
+  padding: 0 15px;
+  font-size: 18px;
+  color: #333;
+}
+.navbar img {
+  height: 40px;
+  width: 40px;
+  margin-left: 20px;
+}
+
+/* Responsive */
+@media screen and (max-width: 1100px) {
+  .navbar {
+    left: 65%;
+  }
+}
+@media screen and (max-width: 800px) {
+  .sidebar {
+    left: 0;
+    z-index: 1000;
+  }
+  .sidebar.close {
+    left: -100%;
+  }
+  #sidebar-close {
     display: block;
+  }
+  #lock-icon {
+    display: none;
+  }
+  .navbar {
+    left: 0;
+    max-width: 100%;
+    transform: translateX(0%);
+  }
+  #sidebar-open {
+    display: block;
+  }
 }
-.menu button {
-    margin-right: 10px;
-    box-shadow: 3px 3px 5px 0px #a5a5a5;
-}
-#trang-chu {
-    height: 60px;
-    width: 90%;
-    margin-top: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 10px;
-    font-size: 1rem;
-    background-color: #ffffff;
-    border-radius: 10px;
-    font-size: 18px;
-    
-}
-#trang-chu a {
-    color: black; 
-
-}
-#trang-chu img {
-    margin-right: 10px;
-    height: 40px;
-    width: 40px;
-}
-a {
-    text-decoration: none;
-    
-}
-
-.header {
-    height: 10vh;
-    width: 84vw;
-    display: grid;
-    grid-template-columns: auto auto;
-    box-shadow: 3px 3px 5px 0px #0000001a;
-
-}
-.search {
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-.search input {
-    height: 60%;
-    width: 60%;
-    padding-left: 40px;
-    border: 2px solid black;
-    border-radius: 20px;
-    margin-left: 3vw;
-}
-.search img {
-    height: 25px;
-    width: 25px;
-    position: absolute;
-    left: 60px;
-}
-.login-register {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin-right: 30px;
-    font-size: 16px;
-}
-.login-register button {
-    height: 60%;
-    min-width: 15%;
-    width: auto;
-    background-color: #1DCBDF;
-    margin-right: 20px;
-    border-radius: 5px;
-    font-size: 1.3rem;
-    font-weight: 300;
-    box-shadow: 3px 3px 5px 0px #a5a5a5;
-}
-.login-register  a {
-    color: white;
-}
-.title-content {
-    height: 55px;
-    width: 98%;
-    margin: 30px auto;
-    display: flex;
-    align-items: center;
-    box-shadow: 3px 3px 5px 0px #a5a5a5;
-    border-radius: 15px;
-    background-color: #1DCBDF;
-}
-.title-content > p{
-    font-weight: bold;
-    font-size: 25px;
-    margin-left: 20px;
-    color: white;
-
+.sidebar .menu-item {
+  padding: 0 !important;
 }
