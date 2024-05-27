@@ -1,5 +1,5 @@
 /* Import Google font - Poppins */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"); */
 * {
   margin: 0;
   padding: 0;
@@ -31,15 +31,17 @@ body {
 
 /* Sidebar */
 .sidebar {
+  z-index: 1;
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   width: 270px;
-  background: #a5f3fc;
+  background: #A5F3FC;
   padding: 15px 10px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
   transition: all 0.4s ease;
+  
 }
 .sidebar.close {
   width: calc(55px + 20px);
@@ -65,7 +67,7 @@ body {
   color: #4070f4;
   font-size: 25px;
   cursor: pointer;
-  margin-left: -4px;
+  margin-left: 40px;
   transition: all 0.3s ease;
 }
 #sidebar-close {
@@ -103,7 +105,7 @@ body {
   width: 20px;
   border-radius: 25px;
   background: #aaa;
-  transition: all 0.3s ease;
+  transition: all 0.1s ease;
 }
 .menu-title .line {
   opacity: 0;
@@ -113,6 +115,7 @@ body {
 }
 .item {
   list-style: none;
+  height: 50px;
 }
 .trang-chu {
   background-color: white;
@@ -133,9 +136,9 @@ body {
   white-space: nowrap;
 }
 .link i {
-  height: 50px;
-  min-width: 55px;
   display: flex;
+  min-width: 55px;
+  height: 50px;
   font-size: 22px;
   align-items: center;
   justify-content: center;
@@ -157,26 +160,30 @@ body {
   color: #333;
 }
 
-/* Navbar */
 .navbar {
-  max-width: 500px;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 60%;
-  transform: translateX(-50%);
-  background: #fff;
-  padding: 10px 20px;
-  border-radius: 0 0 8px 8px;
+  display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 10px 20px;
+  background: #fff;
+  border-radius: 0 0 8px 8px;
   box-shadow: 0 6px 12px -2px #32325d40, 0 3px 7px -3px #0000004d;
 }
+
 #sidebar-open {
   font-size: 30px;
   color: #333;
   cursor: pointer;
   margin-right: 20px;
   display: none;
+}
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+.search-form {
+  margin-left: 10px;
 }
 .search-box {
   height: 46px;
@@ -188,6 +195,31 @@ body {
   padding: 0 15px;
   font-size: 18px;
   color: #333;
+  
+}
+.search-box-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+
+.search-box {
+  padding-left: 40px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #aaa;
+}
+
+
+.search-box::placeholder {
+  font-size: 14px;
+  color: #aaa;
 }
 .navbar img {
   height: 40px;
@@ -204,7 +236,7 @@ body {
 @media screen and (max-width: 800px) {
   .sidebar {
     left: 0;
-    z-index: 1000;
+    /* z-index: 1000; */
   }
   .sidebar.close {
     left: -100%;
@@ -223,7 +255,65 @@ body {
   #sidebar-open {
     display: block;
   }
+  .btn-out {
+    display: none;
+  }
 }
 .sidebar .menu-item {
   padding: 0 !important;
+}
+.colum-title {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  margin: 20px 0px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px -2px #32325d40, 0 3px 7px -3px #0000004d;
+
+  background-color: #1DCBDF;
+  color: white;
+
+  font-size: 30px;
+  font-weight: bold;
+}
+.colum-title p {
+  margin: 0px 10px;
+}
+.row {
+  margin: 0;
+  padding: 0;
+}
+/* Khi sidebar mở khóa */
+.colum-content.locked {
+  margin-left: 270px; /* Độ rộng của sidebar */
+  width: calc(100% - 270px); /* Độ rộng của colum-content trừ đi độ rộng của sidebar */
+}
+
+/* Khi sidebar đóng */
+.colum-content.closed {
+  margin-left: 75px; /* Độ rộng của sidebar khi thu gọn */
+  width: calc(100% - 75px); /* Độ rộng của colum-content trừ đi độ rộng của sidebar thu gọn */
+}
+
+/* Khi sidebar không có */
+.colum-content.full {
+  margin-left: 0; /* Không có sidebar */
+  width: 100%; /* Độ rộng của colum-content chiếm toàn bộ không gian */
+}
+
+/* Đảm bảo colum-content chiếm toàn bộ chiều rộng màn hình */
+.colum-content {
+  transition: margin-left 0.4s ease, width 0.4s ease;
+}
+.carousel img {
+  height: 300px;
+  border-radius: 20px;
+  object-fit: cover;
+  
+}
+.carousel-indicators [data-bs-target] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  list-style-type: none;
 }
