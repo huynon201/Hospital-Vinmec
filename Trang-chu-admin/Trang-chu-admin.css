@@ -31,15 +31,15 @@ body {
 
 /* Sidebar */
 .sidebar {
-  z-index: 1;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1;
   height: 100%;
   width: 270px;
-  background: #A5F3FC;
   padding: 15px 10px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  background: #A5F3FC;
   transition: all 0.4s ease;
   
 }
@@ -50,10 +50,12 @@ body {
   gap: 8px;
 }
 .logo-name {
-  font-size: 22px;
   color: #333;
-  font-weight: 500px;
   transition: all 0.3s ease;
+  font-family: "Marck Script", cursive;
+  font-size: 30px;
+  font-weight: 400;
+  font-style: normal;
 }
 .sidebar.close .logo-name,
 .sidebar.close #lock-icon,
@@ -65,9 +67,9 @@ body {
 #sidebar-close {
   padding: 10px;
   color: #4070f4;
-  font-size: 25px;
+  font-size: 27px;
   cursor: pointer;
-  margin-left: 40px;
+  margin-left: 30px;
   transition: all 0.3s ease;
 }
 #sidebar-close {
