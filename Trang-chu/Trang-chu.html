@@ -21,6 +21,8 @@
   <script src="Trang-chu.js" defer></script>
   <script src="https://code.jquery.com/jquery-3.7.1.js"
   integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -88,7 +90,7 @@
               <button class="btn btn-outline-info ms-1">Search</button>
             </form>
           </div>
-          <button id="loginBtn" class="btn-in btn btn-outline-primary">
+          <button id="openLogin" class="btn-in btn btn-outline-primary">
             Đăng nhập
           </button>
         </div>
@@ -149,7 +151,31 @@
   <!-- Modal -->
         <div id="loginModal" class="modal">
           <div class="modal-content">
-              <div id="loginFormContainer"></div>
+              <div id="loginFormContainer">
+                <div class="btn_close">
+                  <a href="../Trang-chu/Trang-chu.html">
+                      <i class="bi bi-x-lg"></i>
+                  </a>
+              </div>
+              <h1>Đăng nhập</h1>
+              <div class="input_box">
+                  <input id="name" type="text" placeholder="Tên đăng nhập">
+                  <span class="error-name error" style="color: red;"></span>
+              </div>
+              <div class="input_box">
+                  <input id="password" type="password" placeholder="Mật khẩu">
+                  <i class="bi bi-eye-slash"></i>
+                  <span class="error-password error" style="color: red;"></span>
+              </div>
+              <div class="text_remember_login">
+                  <input type="checkbox">
+                  <span> Lưu thông tin đăng nhập</span>
+              </div>
+              <div class="btn_login">
+                  <button class="btn-login">Đăng nhập</button>
+              </div>
+              <div class="text_register">Bạn chưa có tài khoản?<a href="../Register/Register.html"> đăng ký!</a></div>
+              </div>
           </div>
       </div>
 </body>
