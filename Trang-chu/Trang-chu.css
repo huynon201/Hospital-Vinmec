@@ -321,13 +321,11 @@ body {
   border-radius: 50%;
   list-style-type: none;
 }
-<<<<<<< HEAD
 .btn-in{
   height: 46px;
   white-space: nowrap;
   
 }
-=======
 
 
 .btn_close{
@@ -410,4 +408,3 @@ input:hover{
   border-radius: 10px;
   margin: 120px auto;
 }
->>>>>>> 8cf5d992834e8595949b974a7952a34c09dbd2bc
