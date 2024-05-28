@@ -3,20 +3,6 @@
     padding: 0px;
     box-sizing: border-box;
 }
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #A5F3FC;
-}
-
-.body_login{
-    width: 540px;
-    height: 380px;
-    border-radius: 10px;
-    background: white;
-}
 .btn_close{
     margin-top: 15px;
     margin-left: 505px;
@@ -24,7 +10,7 @@ body{
 .btn_close a i{
     font-size: 20px;
 }
-.body_login h1{
+h1{
     font-size: 36px;
     text-align: center;
     color: rgb(29 203 223) ;
@@ -69,13 +55,11 @@ input:hover{
     font-size: 20px;
     border-radius: 5px;
 }
-.text_register{
-    margin: 10px 30%;
-}
 .text_register a{
     text-decoration: none;
     color: rgb(29 203 223);
 }
 .text_register{
     color: gray;
+    margin: 10px 20%;
 }

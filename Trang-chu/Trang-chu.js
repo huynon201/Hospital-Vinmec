@@ -85,3 +85,31 @@ sidebarCloseBtn.addEventListener("click", toggleSidebar);
 
 // Initial call to handle resize
 handleResize();
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  const modal = document.getElementById('loginModal');
+  const btn = document.getElementById('loginBtn');
+  const span = document.getElementsByClassName('close')[0];
+  const loginFormContainer = document.getElementById('loginFormContainer');
+
+  btn.onclick = function() {
+      modal.style.display = 'block';
+      // Sử dụng fetch để tải nội dung từ login.html
+      fetch('../Login/login.html')
+      .then(response => response.text())
+      .then(data => {
+          loginFormContainer.innerHTML = data;
+
+          // Tải CSS từ login.css
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = '../Login/login.css';
+          document.head.appendChild(link);
+
+          const script = document.createElement('script');
+          script.src = '../Login/login.js';
+          document.body.appendChild(script);
+      })
+      .catch(error => console.error('Error fetching the login form:', error));
+  }
+});
