@@ -1,5 +1,4 @@
-/* Import Google font - Poppins */
-/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"); */
+
 * {
   margin: 0;
   padding: 0;
@@ -52,7 +51,7 @@ body {
 .logo-name {
   color: #333;
   transition: all 0.3s ease;
-  font-family: "Marck Script", cursive;
+  font-family: cursive;
   font-size: 30px;
   font-weight: 400;
   font-style: normal;
@@ -164,7 +163,7 @@ body {
 
 .navbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: nowrap;
   padding: 10px 20px;
@@ -231,7 +230,6 @@ body {
 
 /* Responsive */
 @media screen and (max-width: 1100px) {
-  /* cái này dẫn đến lỗi thanh navbar bị thụt lùi */
   /* .navbar {
     left: 65%;
   } */
@@ -251,7 +249,6 @@ body {
     display: none;
   }
   .navbar {
-    
     left: 0;
     max-width: 100%;
     transform: translateX(0%);
@@ -287,25 +284,24 @@ body {
   margin: 0;
   padding: 0;
 }
-
+/* Khi sidebar mở khóa */
 .colum-content.locked {
   margin-left: 270px; 
-  width: calc(100% - 270px);
+  width: calc(100% - 270px); 
 }
-
-
+/* Khi sidebar đóng */
 .colum-content.closed {
   margin-left: 75px; 
-  width: calc(100% - 75px);
+  width: calc(100% - 75px); 
 }
 
-
+/* Khi sidebar không có */
 .colum-content.full {
-  margin-left: 0; 
-  width: 100%; 
+  margin-left: 0;
+  width: 100%;
 }
 
-
+/* Đảm bảo colum-content chiếm toàn bộ chiều rộng màn hình */
 .colum-content {
   transition: margin-left 0.4s ease, width 0.4s ease;
 }
@@ -324,7 +320,7 @@ body {
 .btn-in{
   height: 46px;
   white-space: nowrap;
-  
+  margin-left: 3px;
 }
 
 
