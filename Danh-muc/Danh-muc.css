@@ -2,7 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji'
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 body {
   min-height: 100vh;
@@ -315,25 +317,45 @@ body {
   height: 46px;
   white-space: nowrap;
 }
-.btn-add{
-    
+.btn-add {
 }
 .btn-add > button {
-    min-height: 45px;
-    min-width: 80px;
-    padding: 4px 15px;
-    border: 3px solid #1dcbdf;
-    background-color: #1BCBDF;
-    border-radius: 5px;
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    box-shadow: 0 6px 12px -2px #32325d40, 0 3px 7px -3px #0000004d;
+  background-color: #1dcbdf;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0px 2px 5px 0px gray;
+  padding: 7px 30px;
+  font-size: 20px;
+  border: 2px solid #1dcbdf;
+  margin-top: 10px;
 }
 .btn-add > button:hover {
-    background-color: white;
-    color: #1BCBDF;
+  background-color: white;
+  color: #1dcbdf;
+  border: 2px solid #1dcbdf;
 }
 .table-danh-muc {
-    
+  width: 99%;
+  margin: 15px 10px;
+  padding: 10px;
+  text-align: center;
+}
+.table-danh-muc thead tr {
+  background-color: #a5f3fc;
+}
+.table th:first-child {
+  border-top-left-radius: 10px;
+}
+.table th:last-child {
+  border-top-right-radius: 10px;
+}
+.table tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+.table tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+.table th {
+  background-color: #a5f3fc;
+  font-weight: 500;
 }
