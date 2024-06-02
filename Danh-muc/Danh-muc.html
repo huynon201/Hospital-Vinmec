@@ -177,13 +177,33 @@
         <div class="colum-title">
           <p>Danh mục</p>
         </div>
-        <div class="btn-add mb-5">
-            <button id="TaoTK" type="button" class="m-2 rounded-2">
+        <div class="btn-add">
+            <button id="TaoTK" type="button" class="m-2 rounded-2" data-bs-toggle="modal" data-bs-target="#myModal">
                 Tạo
               </button>
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header d-flex justify-content-center position-relative">
+                            <h4>Tạo Danh Mục</h4>
+                            <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Tên danh mục</p>
+                            <input type="text" id="ten-danh-muc" required>
+                            <p class="mt-3">Mô tả</p>
+                            <textarea rows="4" id="mo-ta" required></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+                            <button onclick="add()" type="button" class="btn btn-info" >Tạo</button>
+                          </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <table>
-            <table class="table-danh-muc table table-hover">
+            <table class="table-danh-muc table table-hover" id="render">
                 <thead>
                     <tr>
                         <th>STT</th>
@@ -193,7 +213,7 @@
                         <th>Hành động</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody > 
                     <tr>
                         <td>1</td>
                         <td>1</td>

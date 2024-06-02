@@ -359,3 +359,29 @@ body {
   background-color: #a5f3fc;
   font-weight: 500;
 }
+
+.modal-header h4{
+   color: #1ECBE1;
+}
+.modal-body input, textarea {
+    width: 98%;
+    min-height: 32px;
+    border-radius: 5px;
+    border: 1px solid rgb(209, 213, 219);
+}
+.modal-body input:hover, 
+.modal-body textarea:hover {
+    border-color: #4096FE;
+}
+
+.modal-body input:focus, 
+.modal-body textarea:focus {
+    border-color: #4096FE;
+    outline: none;
+}
+.modal-footer .btn {
+    color: white;
+    font-size: 20px;
+    width: 100px;
+    
+}
