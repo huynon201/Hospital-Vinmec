@@ -26,8 +26,8 @@
       rel="stylesheet"
     />
     <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Trang-chu-admin.css" />
-    <script src="Trang-chu-admin.js" defer></script>
+    <link rel="stylesheet" href="Danh-muc.css" />
+    <script src="Danh-muc.js" defer></script>
   </head>
   <body>
     <div class="row">
@@ -52,13 +52,13 @@
                   <span class="title">Dashboard</span>
                   <span class="line"></span>
                 </div>
-                <li class="item trang-chu">
+                <li class="item">
                   <a href="../Trang-chu-admin/Trang-chu-admin.html" class="link flex">
                     <i class="bx bxs-home"></i>
                     <span>Trang chủ</span>
                   </a>
                 </li>
-                <li class="item">
+                <li class="item el-active">
                   <a href="../Danh-muc/Danh-muc.html" class="link flex">
                     <i class="bx bxs-grid-alt"></i>
                     <span>Danh mục</span>
@@ -175,171 +175,32 @@
           </div>
         </nav>
         <div class="colum-title">
-          <p>Trang chủ</p>
+          <p>Danh mục</p>
         </div>
-        <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
-          <ol class="carousel-indicators">
-            <li
-              data-bs-target="#carouselId"
-              data-bs-slide-to="0"
-              class="active"
-              aria-current="true"
-              aria-label="First slide"
-            ></li>
-            <li
-              data-bs-target="#carouselId"
-              data-bs-slide-to="1"
-              aria-label="Second slide"
-            ></li>
-            <li
-              data-bs-target="#carouselId"
-              data-bs-slide-to="2"
-              aria-label="Third slide"
-            ></li>
-            <li
-              data-bs-target="#carouselId"
-              data-bs-slide-to="3"
-              aria-label="Third slide"
-            ></li>
-            <li
-              data-bs-target="#carouselId"
-              data-bs-slide-to="4"
-              aria-label="Third slide"
-            ></li>
-            <li
-              data-bs-target="#carouselId"
-              data-bs-slide-to="5"
-              aria-label="Third slide"
-            ></li>
-            <li
-              data-bs-target="#carouselId"
-              data-bs-slide-to="6"
-              aria-label="Third slide"
-            ></li>
-            <li
-              data-bs-target="#carouselId"
-              data-bs-slide-to="7"
-              aria-label="Third slide"
-            ></li>
-          </ol>
-          <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-              <img
-                src="../Assets/content/slide/slide-1.jpg"
-                class="w-100 d-block"
-                alt="First slide"
-              />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="../Assets/content/slide/slide-2.jpg"
-                class="w-100 d-block"
-                alt="Second slide"
-              />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="../Assets/content/slide/slide-3.jpg"
-                class="w-100 d-block"
-                alt="Third slide"
-              />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="../Assets/content/slide/slide-4.jpg"
-                class="w-100 d-block"
-                alt="Third slide"
-              />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="../Assets/content/slide/slide-5.jpg"
-                class="w-100 d-block"
-                alt="Third slide"
-              />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="../Assets/content/slide/slide-6.jpg"
-                class="w-100 d-block"
-                alt="Third slide"
-              />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="../Assets/content/slide/slide-7.jpg"
-                class="w-100 d-block"
-                alt="Third slide"
-              />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="../Assets/content/slide/slide-8.jpg"
-                class="w-100 d-block"
-                alt="Third slide"
-              />
-            </div>
-          </div>
-          <button
-            class="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselId"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"><span>
-          </button>
-          <button
-            class="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselId"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"><span>
-          </button>
+        <div class="btn-add mb-5">
+            <button type="button">Tạo</button>
         </div>
-        <div class="colum-title">
-          <p>Vật tư và thiết bị</p>
-        </div>
-        <div class="colum-supplies row justify-content-between">
-          <div class="card col shadow-md">
-            <img class="card-img-top" src="../Assets/content/supplies/kim-tiem.png" alt="" />
-            <div class="card-body">
-              <h4 class="card-title">Kim Tiêm</h4>
-            </div>
-            <div class="icon-shopping">
-              <i class='bx bxs-shopping-bag'></i>
-              <p id="">1</p>
-            </div>
-          </div>
-          <div class="card col">
-            <img class="card-img-top" src="../Assets/content/supplies/khau-trang.png" alt="" />
-            <div class="card-body">
-              <h4 class="card-title">Khẩu Trang</h4>
-            </div>
-            <div class="icon-shopping">
-              <i class='bx bxs-shopping-bag'></i>
-              <p id="">1</p>
-            </div>
-          </div>
-          <div class="card col">
-            <img class="card-img-top" src="../Assets/content/supplies/ao-blue.png" alt="" />
-            <div class="card-body">
-              <h4 class="card-title">Áo Blue</h4>
-            </div>
-            <div class="icon-shopping">
-              <i class='bx bxs-shopping-bag'></i>
-              <p id="">1</p>
-            </div>
-          </div>
-          <div class="card col">
-            <img class="card-img-top" src="../Assets/content/supplies/ao-bac-si.png" alt="" />
-            <div class="card-body">
-              <h4 class="card-title">Áo Phẫu Thuật</h4>
-            </div>
-            <div class="icon-shopping">
-              <i class='bx bxs-shopping-bag'></i>
-              <p id="">1</p>
-            </div>
-          </div>
-          
+        <table>
+            <table class="table-danh-muc table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>ID</th>
+                        <th>Tên danh mục</th>
+                        <th>Mô tả</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
       </div>
     </div>

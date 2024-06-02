@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -38,9 +37,8 @@ body {
   width: 270px;
   padding: 15px 10px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
-  background: #A5F3FC;
+  background: #a5f3fc;
   transition: all 0.4s ease;
-  
 }
 .sidebar.close {
   width: calc(55px + 20px);
@@ -118,7 +116,7 @@ body {
   list-style: none;
   height: 50px;
 }
-.trang-chu {
+.el-active {
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 6px 12px -2px #32325d40, 0 3px 7px -3px #0000004d;
@@ -196,7 +194,6 @@ body {
   padding: 0 15px;
   font-size: 18px;
   color: #333;
-  
 }
 .search-box-container {
   position: relative;
@@ -216,7 +213,6 @@ body {
   font-size: 20px;
   color: #aaa;
 }
-
 
 .search-box::placeholder {
   font-size: 14px;
@@ -270,7 +266,7 @@ body {
   border-radius: 10px;
   box-shadow: 0 6px 12px -2px #32325d40, 0 3px 7px -3px #0000004d;
 
-  background-color: #1DCBDF;
+  background-color: #1dcbdf;
   color: white;
 
   font-size: 30px;
@@ -285,20 +281,20 @@ body {
 }
 /* Khi sidebar mở khóa */
 .colum-content.locked {
-  margin-left: 270px; 
-  width: calc(100% - 270px); 
+  margin-left: 270px;
+  width: calc(100% - 270px);
 }
 
 /* Khi sidebar đóng */
 .colum-content.closed {
   margin-left: 75px;
-  width: calc(100% - 75px); 
+  width: calc(100% - 75px);
 }
 
 /* Khi sidebar không có */
 .colum-content.full {
-  margin-left: 0; 
-  width: 100%; 
+  margin-left: 0;
+  width: 100%;
 }
 
 .colum-content {
@@ -308,7 +304,6 @@ body {
   height: 300px;
   border-radius: 20px;
   object-fit: cover;
-  
 }
 .carousel-indicators [data-bs-target] {
   width: 10px;
@@ -316,89 +311,29 @@ body {
   border-radius: 50%;
   list-style-type: none;
 }
-.btn-in{
+.btn-in {
   height: 46px;
   white-space: nowrap;
-  
 }
-.colum-supplies {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
+.btn-add{
+    
 }
-.card {
-  position: relative;
-  flex: 1 1 calc(25% - 20px); 
-  max-width: calc(25% - 20px);
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-  border-radius: 15px;
+.btn-add > button {
+    min-height: 45px;
+    min-width: 80px;
+    padding: 4px 15px;
+    border: 3px solid #1dcbdf;
+    background-color: #1BCBDF;
+    border-radius: 5px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 6px 12px -2px #32325d40, 0 3px 7px -3px #0000004d;
 }
-.card > img {
-  position: relative;
-  height: 400px;
-  width: 100%;
-  object-fit: cover;
+.btn-add > button:hover {
+    background-color: white;
+    color: #1BCBDF;
 }
-.card-body {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  text-overflow: ellipsis;
-  background-color: #333333;
-  color: white;
-}
-.card-body h4 {
-  margin-bottom: 0px;
-  padding: 4px 0px;
-  text-align: center;
-  font-size: 20px;
-  font-weight: 300;
-}
-.card:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
-  transform: translateY(-5px);
-}
-.icon-shopping {
-  display: flex;
-  align-items: center;
-  position: absolute; 
-  color: white;
-  top: 0.5rem;
-  left: 0.5rem;
-  padding: 0.25rem 0.75rem;
-  background-color: #1DCBDF;
-  border-radius: 0.5rem;
-}
-.icon-shopping p {
-  margin: 0px;
-  margin-left: 8px;
-}
-
-
-@media screen and (min-width: 1200px) {
-  .card {
-    flex: 1 1 calc(25% - 20px);
-    max-width: calc(25% - 20px);
-  }
-}
-
-@media screen and (min-width: 800px) and (max-width: 1199px) {
-  .card {
-    flex: 1 1 calc(50% - 20px);
-    max-width: calc(50% - 20px);
-  }
-}
-
-
-@media screen and (max-width: 799px) {
-  .card {
-    flex: 1 1 calc(100% - 20px);
-    max-width: calc(100% - 20px);
-  }
+.table-danh-muc {
+    
 }
