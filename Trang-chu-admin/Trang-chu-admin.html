@@ -298,8 +298,12 @@
         <div class="colum-title">
           <p>Vật tư và thiết bị</p>
         </div>
+
+
         <div class="colum-supplies row justify-content-between">
-          <div class="card col shadow-md">
+
+
+          <div class="card col" data-bs-toggle="modal" data-bs-target="#modal-kim-tiem">
             <img class="card-img-top" src="../Assets/content/supplies/kim-tiem.png" alt="" />
             <div class="card-body">
               <h4 class="card-title">Kim Tiêm</h4>
@@ -309,7 +313,9 @@
               <p id="">1</p>
             </div>
           </div>
-          <div class="card col">
+
+
+          <div class="card col" data-bs-toggle="modal" data-bs-target="#modal-khau-trang">
             <img class="card-img-top" src="../Assets/content/supplies/khau-trang.png" alt="" />
             <div class="card-body">
               <h4 class="card-title">Khẩu Trang</h4>
@@ -319,18 +325,22 @@
               <p id="">1</p>
             </div>
           </div>
-          <div class="card col">
+
+
+          <div class="card col" data-bs-toggle="modal" data-bs-target="#modal-ao-blue">
             <img class="card-img-top" src="../Assets/content/supplies/ao-blue.png" alt="" />
             <div class="card-body">
-              <h4 class="card-title">Áo Blue</h4>
+              <h4 class="card-title">Áo Blouse </h4>
             </div>
             <div class="icon-shopping">
               <i class='bx bxs-shopping-bag'></i>
               <p id="">1</p>
             </div>
           </div>
-          <div class="card col"data-bs-toggle="modal" data-bs-target="#ao-phau-thuat">
-            <img class="card-img-top" src="../Assets/content/supplies/ao-bac-si.png" alt="" />
+
+
+          <div class="card col" data-bs-toggle="modal" data-bs-target="#modal-ao-phau-thuat">
+            <img class="card-img-top" src="../Assets/content/supplies/ao-phau-thuat.png" alt="" />
             <div class="card-body">
               <h4 class="card-title">Áo Phẫu Thuật</h4>
             </div>
@@ -341,12 +351,12 @@
           </div>
 
 
-          <div class="modal fade" id="ao-phau-thuat">
+          <div class="modal fade" id="modal-ao-phau-thuat">
             <div class="modal-dialog modal-dialog-centered modal-lg">
               <div class="modal-content">
                 <div class="row">
                   <div class="col-sm-6">
-                    <img style="object-fit: cover;" class="w-100 h-100" src="../Assets/content/supplies/ao-bac-si.png" alt="">
+                    <img style="object-fit: cover;" class="w-100 h-100" src="../Assets/content/supplies/ao-phau-thuat.png" alt="">
                   </div>
                   <!-- Modal Header -->
                   <div class="col-sm-6">
@@ -362,7 +372,7 @@
                       <p>Danh mục</p>
                       <p>Vật dụng y tế</p>
                       <p>Thương hiệu</p>
-                      <p>Dior</p>
+                      <p>Thống nhất</p>
                       <p>Màu</p>
                       <p>Xanh</p>
                       <p>Số lượng</p>
@@ -376,7 +386,116 @@
               </div>
             </div>
           </div>
+
+
+          <div class="modal fade" id="modal-kim-tiem">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <img style="object-fit: cover;" class="w-100 h-100" src="../Assets/content/supplies/kim-tiem.png" alt="">
+                  </div>
+                  <!-- Modal Header -->
+                  <div class="col-sm-6">
+                    <div class="modal-header d-flex justify-content-center align-items-center text-center">
+                      <h4 class="modal-title w-100">Kim Tiêm</h4>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+              
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                      <p>Mô tả</p>
+                      <p>Kim tiêm dành cho y tá hoặc bác sĩ</p>
+                      <p>Danh mục</p>
+                      <p>Thiết bị y tế</p>
+                      <p>Thương hiệu</p>
+                      <p>Vinahankook</p>
+                      <p>Màu</p>
+                      <p>Trắng</p>
+                      <p>Số lượng</p>
+                      <p>1</p>
+                      <p>Kích thước</p>
+                      <p>15cm</p>
+                    </div>
+                  </div>
+                </div>
           
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="modal-khau-trang">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <img style="object-fit: cover;" class="w-100 h-100" src="../Assets/content/supplies/khau-trang.png" alt="">
+                  </div>
+                  <!-- Modal Header -->
+                  <div class="col-sm-6">
+                    <div class="modal-header d-flex justify-content-center align-items-center text-center">
+                      <h4 class="modal-title w-100">Khẩu Trang</h4>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+              
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                      <p>Mô tả</p>
+                      <p>Khẩu trang y tế chống bụi bẩn dùng 1 lần</p>
+                      <p>Danh mục</p>
+                      <p>vận dụng y tế</p>
+                      <p>Thương hiệu</p>
+                      <p>Unicharm</p>
+                      <p>Màu</p>
+                      <p>Xanh</p>
+                      <p>Số lượng</p>
+                      <p>1</p>
+                      <p>Kích thước</p>
+                      <p>11cm</p>
+                    </div>
+                  </div>
+                </div>
+          
+              </div>
+            </div>
+          </div>
+          
+
+          <div class="modal fade" id="modal-ao-blue">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <img style="object-fit: cover;" class="w-100 h-100" src="../Assets/content/supplies/ao-blue.png" alt="">
+                  </div>
+                  <!-- Modal Header -->
+                  <div class="col-sm-6">
+                    <div class="modal-header d-flex justify-content-center align-items-center text-center">
+                      <h4 class="modal-title w-100">Áo Blouse </h4>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+              
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                      <p>Mô tả</p>
+                      <p>Áo dành cho các bác sĩ</p>
+                      <p>Danh mục</p>
+                      <p>vận dụng y tế</p>
+                      <p>Thương hiệu</p>
+                      <p>Princess</p>
+                      <p>Màu</p>
+                      <p>Trắng</p>
+                      <p>Số lượng</p>
+                      <p>1</p>
+                      <p>Kích thước</p>
+                      <p>1m4</p>
+                    </div>
+                  </div>
+                </div>
+          
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
