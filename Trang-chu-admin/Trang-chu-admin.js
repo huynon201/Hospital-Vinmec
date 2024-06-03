@@ -85,3 +85,8 @@ sidebarCloseBtn.addEventListener("click", toggleSidebar);
 
 // Initial call to handle resize
 handleResize();
+
+document.querySelector('.card.col').addEventListener('click', function() {
+  var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+  myModal.show();
+});

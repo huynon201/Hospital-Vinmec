@@ -402,3 +402,14 @@ body {
     max-width: calc(100% - 20px);
   }
 }
+.modal-body p:nth-child(even){
+  background-color: #EAF0EE;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.modal-header {
+  color: #1BCBDF;
+  text-align: center;
+}
+

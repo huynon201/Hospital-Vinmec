@@ -90,6 +90,15 @@ function saveData() {
   localStorage.setItem('danhMucData', JSON.stringify(data));
 }
 
+// Initialize default data if localStorage is empty
+if (data.length === 0) {
+  data = [
+    { id: Date.now(), tenDanhMuc: "Danh Mục 1", moTa: "Mô tả danh mục 1" },
+    { id: Date.now() + 1, tenDanhMuc: "Danh Mục 2", moTa: "Mô tả danh mục 2" }
+  ];
+  saveData();
+}
+
 function render() {
   const tbody = document.querySelector("#render tbody");
   tbody.innerHTML = "";
@@ -101,8 +110,8 @@ function render() {
       <td>${item.tenDanhMuc}</td>
       <td>${item.moTa}</td>
       <td>
-        <button onclick="editItem(${item.id})" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#myModal">Sửa</button>
-        <button onclick="deleteItem(${item.id})" class="btn btn-danger">Xóa</button>
+        <button onclick="editItem(${index})" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#myModal">Sửa</button>
+        <button onclick="deleteItem(${index})" class="btn btn-danger">Xóa</button>
       </td>
     `;
     tbody.appendChild(row);
@@ -114,7 +123,6 @@ function add() {
   const moTaInput = document.getElementById("mo-ta");
 
   const newItem = {
-    // id: data.length ? data[data.length - 1].id + 1 : 1,
     id: Date.now(),
     tenDanhMuc: tenDanhMucInput.value,
     moTa: moTaInput.value,
@@ -127,8 +135,8 @@ function add() {
   render();
 }
 
-function editItem(id) {
-  const item = data.find((item) => item.id === id);
+function editItem(index) {
+  const item = data[index];
   if (item) {
     const tenDanhMucInput = document.getElementById("ten-danh-muc");
     const moTaInput = document.getElementById("mo-ta");
@@ -136,14 +144,12 @@ function editItem(id) {
     tenDanhMucInput.value = item.tenDanhMuc;
     moTaInput.value = item.moTa;
 
-    data.splice(data.indexOf(item), 1);
-
     const addBtn = document.querySelector(".modal-footer .btn-info");
     addBtn.textContent = "Lưu";
     addBtn.onclick = function() {
       item.tenDanhMuc = tenDanhMucInput.value;
       item.moTa = moTaInput.value;
-      data.push(item);
+      data[index] = item; // Update the item in place
       saveData();
       render();
       tenDanhMucInput.value = "";
@@ -155,8 +161,7 @@ function editItem(id) {
   }
 }
 
-function deleteItem(id) {
-  const index = data.findIndex((item) => item.id === id);
+function deleteItem(index) {
   if (index !== -1) {
     data.splice(index, 1);
     saveData();
