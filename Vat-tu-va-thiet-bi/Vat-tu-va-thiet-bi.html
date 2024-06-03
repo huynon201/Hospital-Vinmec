@@ -26,8 +26,8 @@
       rel="stylesheet"
     />
     <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Danh-muc.css" />
-    <script src="Danh-muc.js" defer></script>
+    <link rel="stylesheet" href="Vat-tu-va-thiet-bi.css" />
+    <script src="Vat-tu-va-thiet-bi.js" defer></script>
   </head>
   <body>
     <div class="row">
@@ -58,7 +58,7 @@
                     <span>Trang chủ</span>
                   </a>
                 </li>
-                <li class="item el-active">
+                <li class="item">
                   <a href="../Danh-muc/Danh-muc.html" class="link flex">
                     <i class="bx bxs-grid-alt"></i>
                     <span>Danh mục</span>
@@ -71,7 +71,7 @@
                   <span class="title">Editor</span>
                   <span class="line"></span>
                 </div>
-                <li class="item">
+                <li class="item el-active" >
                   <a href="../Vat-tu-va-thiet-bi/Vat-tu-va-thiet-bi.html" class="link flex">
                     <i class="bx bxs-data"></i>
                     <span>Vật tư và thiết bị</span>
@@ -175,24 +175,52 @@
           </div>
         </nav>
         <div class="colum-title">
-          <p>Danh mục</p>
+          <p>Vật tư và thiết bị</p>
         </div>
         <div class="btn-add">
-            <button id="TaoTK" type="button" class="m-2 rounded-2" data-bs-toggle="modal" data-bs-target="#myModal">
+            <button id="TaoTK" type="button" class="m-2 rounded-2" data-bs-toggle="modal" data-bs-target="#modal-tao">
                 Tạo
-              </button>
-            <div class="modal fade" id="myModal">
+            </button>
+
+            <button id="TaoTK" type="button" class="m-2 rounded-2" data-bs-toggle="modal" data-bs-target="#myModal">
+                Xuất
+            </button>
+
+            <button id="TaoTK" type="button" class="m-2 rounded-2" data-bs-toggle="modal" data-bs-target="#myModal">
+                Nhập
+            </button>
+
+            <div class="modal fade" id="modal-tao">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header d-flex justify-content-center position-relative">
-                            <h4>Tạo Danh Mục</h4>
+                            <h4>Tạo Vật tư</h4>
                             <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
-                            <p>Tên danh mục</p>
-                            <input type="text" id="ten-danh-muc" required>
+                            <p>Tên vật tư</p>
+                            <input type="text" id="ten-vat-tu" required>
                             <p class="mt-3">Mô tả</p>
                             <textarea rows="4" id="mo-ta" required></textarea>
+                            <p>Thương hiệu</p>
+                            <input type="text" id="thuong-hieu" required>
+                            <p>Kích thước</p>
+                            <input type="text" id="kich-thuoc" required>
+                            <p>Danh mục</p>
+                            <input type="search" id="danh-muc" autocomplete="off" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-autocomplete="list"  required>
+                            <p>Màu</p>
+                            <input type="text" id="mau" required>
+                            <p>Ảnh</p>
+                            <div class="upload-btn-wrapper">
+                                <i class='bx bx-plus'style="font-size: 24px;"></i>
+                                <span role = "button"> Tải ảnh lên</span>
+                                <input id="anh-vat-tu" type="file" accept="image/png,image/jpg,image/jpeg" >
+                            </div>
+                            <!-- <div id="image-preview-container" style="display: inline-block; margin-left: 10px;">
+                                <img id="preview-img" style="width: 100px; height: 100px;" src="" alt="">
+                            </div> -->
+                            <p>Số lượng</p>
+                            <input id="so-luong" style="width: 100px;" type="number" autocomplete="off" value="0">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
@@ -208,8 +236,14 @@
                     <tr>
                         <th>STT</th>
                         <th>ID</th>
-                        <th>Tên danh mục</th>
-                        <th>Mô tả</th>
+                        <th>Tên vật tư</th>
+                        <th class="mo-ta">Mô tả</th>
+                        <th>Số lượng</th>
+                        <th>Thương hiệu</th>
+                        <th>Màu sắc</th>
+                        <th>Kích thước</th>
+                        <th>Danh mục</th>
+                        <th>Ảnh</th>
                         <th>Hành động</th>
                     </tr>
                 </thead>
