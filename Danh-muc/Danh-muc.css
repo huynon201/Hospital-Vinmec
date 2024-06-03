@@ -339,15 +339,18 @@ body {
   margin: 15px 10px;
   padding: 10px;
   text-align: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
-.table-danh-muc thead tr {
-  background-color: #a5f3fc;
+.table th {
+  border-right: 1px solid rgb(182, 169, 153);
+  
 }
 .table th:first-child {
   border-top-left-radius: 10px;
 }
 .table th:last-child {
   border-top-right-radius: 10px;
+  border-right: 0px;
 }
 .table tr:last-child td:first-child {
   border-bottom-left-radius: 10px;
