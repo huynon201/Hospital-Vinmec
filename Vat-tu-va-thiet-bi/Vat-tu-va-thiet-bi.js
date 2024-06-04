@@ -86,11 +86,11 @@ handleResize();
 
   
 
-let data = JSON.parse(localStorage.getItem("danhMucData")) || [];
+let data = JSON.parse(localStorage.getItem("vatTuData")) || [];
 let currentEditIndex = null;
 
 function saveData() {
-  localStorage.setItem("danhMucData", JSON.stringify(data));
+  localStorage.setItem("vatTuData", JSON.stringify(data));
 }
 
 // Initialize default data if localStorage is empty
