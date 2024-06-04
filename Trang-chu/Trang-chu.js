@@ -120,6 +120,20 @@ $(document).ready(function () {
 
           window.location.href = "../Trang-chu-admin/Trang-chu-admin.html";
       }
+      if (name === "doanhvu" && password === "Doanhvu2003@") {
+        var rememberLogin = $(".text_remember_login input[type='checkbox']").prop("checked");
+
+        if (rememberLogin) {
+            localStorage.setItem("username", name);
+            localStorage.setItem("password", password);
+        } else {
+            localStorage.removeItem("username");
+            localStorage.removeItem("password");
+        }
+
+        window.location.href = "../Trang-chu-users/Trang-chu-users.html";
+    }
+
   });
 
   $(".input_box i").click(function () {
