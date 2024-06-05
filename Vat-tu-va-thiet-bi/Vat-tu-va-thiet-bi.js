@@ -93,6 +93,25 @@ function saveData() {
   localStorage.setItem("vatTuData", JSON.stringify(data));
 }
 
+function updateDanhMucDropdown() {
+  const danhMucDropdown = document.getElementById("browsers");
+  const dataDanhMuc = JSON.parse(localStorage.getItem('danhMucData')) || [];
+  
+  // Xóa tất cả các thẻ option hiện có trong datalist
+  danhMucDropdown.innerHTML = ""; 
+
+  // Tạo và thêm các thẻ option mới dựa trên dữ liệu trong danhMucData2
+  dataDanhMuc.forEach(item => {
+    const option = document.createElement("option");
+    option.value = item.tenDanhMuc;
+    danhMucDropdown.appendChild(option);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  updateDanhMucDropdown(); // Gọi hàm này khi trang được tải để cập nhật datalist
+});
+
 // Initialize default data if localStorage is empty
 if (data.length === 0) {
   data = [
