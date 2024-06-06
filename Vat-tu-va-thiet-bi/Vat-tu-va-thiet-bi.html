@@ -207,10 +207,19 @@
                             <p>Kích thước</p>
                             <input type="text" id="kich-thuoc" required>
                             <p>Danh mục</p>
-                            <input type="search" id="danh-muc" list="browsers" required>
-                            <datalist id="browsers">
-                              
-                            </datalist>
+                            
+                            <fieldset>
+                              <input type="search"
+                              autocomplete="off"
+                              role="combobox"
+                              list=""
+                              id="danh-muc"
+                              name="browsers" required>
+                              <datalist id="browsers" role="listbox">
+                                
+                              </datalist>
+                            </fieldset>
+
                             <p>Màu</p>
                             <input type="text" id="mau" required>
                             <p>Ảnh</p>

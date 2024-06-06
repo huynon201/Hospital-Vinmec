@@ -93,20 +93,94 @@ function saveData() {
   localStorage.setItem("vatTuData", JSON.stringify(data));
 }
 
+const input = document.getElementById("danh-muc");
+const browsers = document.getElementById("browsers");
+
+input.onfocus = function () {
+  browsers.style.display = "block";
+  input.style.borderRadius = "5px 5px 0 0";
+};
+
+input.onblur = function () {
+  setTimeout(() => {
+    browsers.style.display = "none";
+    input.style.borderRadius = "5px";
+  }, 100);
+};
+
+input.oninput = function () {
+  currentFocus = -1;
+  var text = input.value.toUpperCase();
+  for (let option of browsers.options) {
+    if (option.value.toUpperCase().indexOf(text) > -1) {
+      option.style.display = "block";
+    } else {
+      option.style.display = "none";
+    }
+  }
+};
+
+input.onchange = function() {
+  let val = input.value;
+  let opts = browsers.options;
+  for (let i = 0; i < opts.length; i++) {
+    if (opts[i].value === val) {
+      input.value = opts[i].value;
+      break;
+    }
+  }
+};
+
+var currentFocus = -1;
+input.onkeydown = function (e) {
+  if (e.keyCode == 40) {
+    currentFocus++;
+    addActive(browsers.options);
+  } else if (e.keyCode == 38) {
+    currentFocus--;
+    addActive(browsers.options);
+  } else if (e.keyCode == 13) {
+    e.preventDefault();
+    if (currentFocus > -1) {
+      if (browsers.options) browsers.options[currentFocus].click();
+    }
+  }
+};
+
+function addActive(x) {
+  if (!x) return false;
+  removeActive(x);
+  if (currentFocus >= x.length) currentFocus = 0;
+  if (currentFocus < 0) currentFocus = x.length - 1;
+  x[currentFocus].classList.add("active");
+}
+
+function removeActive(x) {
+  for (var i = 0; i < x.length; i++) {
+    x[i].classList.remove("active");
+  }
+}
+
 function updateDanhMucDropdown() {
   const danhMucDropdown = document.getElementById("browsers");
   const dataDanhMuc = JSON.parse(localStorage.getItem('danhMucData')) || [];
   
-  // Xóa tất cả các thẻ option hiện có trong datalist
   danhMucDropdown.innerHTML = ""; 
 
-  // Tạo và thêm các thẻ option mới dựa trên dữ liệu trong danhMucData2
   dataDanhMuc.forEach(item => {
     const option = document.createElement("option");
     option.value = item.tenDanhMuc;
+    option.textContent = item.tenDanhMuc;
     danhMucDropdown.appendChild(option);
+
+    option.onclick = function () {
+      input.value = item.tenDanhMuc;
+      browsers.style.display = "none";
+      input.style.borderRadius = "5px";
+    };
   });
 }
+
 
 document.addEventListener("DOMContentLoaded", function() {
   updateDanhMucDropdown(); // Gọi hàm này khi trang được tải để cập nhật datalist
