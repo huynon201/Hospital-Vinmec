@@ -178,18 +178,18 @@
           <p>Vật tư và thiết bị</p>
         </div>
         <div class="btn-add">
-            <button id="TaoTK" type="button" class="m-2 rounded-2" data-bs-toggle="modal" data-bs-target="#modal-tao">
+            <button id="tao" type="button" class="m-2 rounded-2" data-bs-toggle="modal" data-bs-target="#modal-tao">
                 Tạo
             </button>
 
-            <button id="TaoTK" type="button" class="m-2 rounded-2" data-bs-toggle="modal" data-bs-target="#myModal">
+            <button id="xuat" type="button" class="m-2 rounded-2" data-bs-toggle="modal" data-bs-target="#modal-xuat">
                 Xuất
             </button>
 
-            <button id="TaoTK" type="button" class="m-2 rounded-2" data-bs-toggle="modal" data-bs-target="#myModal">
+            <button id="nhap" type="button" class="m-2 rounded-2" data-bs-toggle="modal" data-bs-target="#modal-nhap">
                 Nhập
             </button>
-
+            <!-- tạo -->
             <div class="modal fade" id="modal-tao">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -207,7 +207,7 @@
                             <p>Kích thước</p>
                             <input type="text" id="kich-thuoc" required>
                             <p>Danh mục</p>
-                            
+
                             <fieldset>
                               <input type="search"
                               autocomplete="off"
@@ -241,8 +241,46 @@
                     </div>
                 </div>
             </div>
+            <!-- phiếu nhập -->
+            <div class="modal fade" id="modal-nhap">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header d-flex justify-content-center position-relative">
+                          <h4>Phiếu nhập kho</h4>
+                          <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal"></button>
+                      </div>
+                      <div class="modal-body">
+                      <div class="mb-3">
+                        <button class="them-vat-tu btn btn-info" style="color: white;">Thêm vật tư</button>
+                      </div>
+                      <div>
+                        <table style="table-layout: auto;" class="table-phieu-nhap table ">
+                          <thead>
+                            <tr>
+                              <th>Tên vật tư</th>
+                              <th>Số lượng</th>
+                              <th>Hành động</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+                          <button onclick="add()" type="button" class="btn btn-info" >Nhập</button>
+                        </div>
+                  </div>
+              </div>
+            </div>
         </div>
-        <div>
+        <div class="table-responsive-xl">
             <table class="table-danh-muc table table-hover" id="render">
                 <thead>
                     <tr>
