@@ -341,14 +341,7 @@ body {
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
-.table-phieu-nhap {
-  width: 99%;
-  margin: 15px 10px;
-  padding: 10px;
-  text-align: center;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-}
+
 
 .table th {
   position: relative;
@@ -464,28 +457,53 @@ input[type="search"] {
   z-index: 1;
 }
 
-#browsers > option {
+option {
   background-color: white;
   padding: 4px;
   margin-bottom: 1px;
   cursor: pointer;
 }
 
-#browsers > option:hover,
-.active {
-  background-color: #ECECEC;
-}
+
 .modal-body > p {
   margin: 10px 0px;
 }
 
-.table-phieu-nhap tbody tr td {
-  height: 220px;
-  padding: 0;
-  display: flex; 
-  align-items: center;
-  justify-content: center;
+.table-phieu-nhap {
+  width: 100%;
+  margin: 15px 0px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
+.table-phieu-nhap tbody {
+  min-height: 220px;
+  padding: 0;
+}
 
+#vat-tu-dropdown{
+  position: absolute;
+  background-color: white;
+  border: 1px solid #4096fe;
+  border-radius: 0 0 5px 5px;
+  border-top: none;
+  font-family: sans-serif;
+  width: 33.2%;
+  padding: 5px;
+  max-height: 10rem;
+  overflow-y: auto;
+  display: block;
+  z-index: 1;
+}
+#vat-tu-dropdown > option {
+  background-color: white;
+  padding: 4px;
+  margin-bottom: 1px;
+  cursor: pointer;
+}
 
+option:hover, .active,  #vat-tu-dropdown > option:hover, .active {
+  background-color: #ECECEC;
+}
