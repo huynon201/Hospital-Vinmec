@@ -26,8 +26,8 @@
       rel="stylesheet"
     />
     <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Vat-tu-va-thiet-bi.css" />
-    <script src="Vat-tu-va-thiet-bi.js" defer></script>
+    <link rel="stylesheet" href="Nhan-vien.css" />
+    <script src="Nhan-vien.js" defer></script>
   </head>
   <body>
     <div class="row">
@@ -58,7 +58,7 @@
                     <span>Trang chủ</span>
                   </a>
                 </li>
-                <li class="item">
+                <li class="item ">
                   <a href="../Danh-muc/Danh-muc.html" class="link flex">
                     <i class="bx bxs-grid-alt"></i>
                     <span>Danh mục</span>
@@ -71,7 +71,7 @@
                   <span class="title">Editor</span>
                   <span class="line"></span>
                 </div>
-                <li class="item el-active" >
+                <li class="item">
                   <a href="../Vat-tu-va-thiet-bi/Vat-tu-va-thiet-bi.html" class="link flex">
                     <i class="bx bxs-data"></i>
                     <span>Vật tư và thiết bị</span>
@@ -90,7 +90,7 @@
                   <span class="title">Management</span>
                   <span class="line"></span>
                 </div>
-                <li class="item">
+                <li class="item el-active">
                   <a href="../Nhan-vien/Nhan-vien.html" class="link flex">
                     <i class="bx bxs-group"></i>
                     <span>Nhân viên</span>
@@ -175,131 +175,61 @@
           </div>
         </nav>
         <div class="colum-title">
-          <p>Vật tư và thiết bị</p>
+          <p>Nhân viên</p>
         </div>
         <div class="btn-add">
-            <button id="tao" type="button" class="m-2 rounded-2" data-bs-toggle="modal" data-bs-target="#modal-tao">
+            <button id="TaoTK" type="button" class="m-2 rounded-2" data-bs-toggle="modal" data-bs-target="#myModal">
                 Tạo
-            </button>
-
-            <button id="xuat" type="button" class="m-2 rounded-2" data-bs-toggle="modal" data-bs-target="#modal-xuat">
-                Xuất
-            </button>
-
-            <button id="nhap" type="button" class="m-2 rounded-2" data-bs-toggle="modal" data-bs-target="#modal-nhap">
-                Nhập
-            </button>
-            <!-- tạo -->
-            <div class="modal fade" id="modal-tao">
+              </button>
+            <div class="modal fade" id="myModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header d-flex justify-content-center position-relative">
-                            <h4>Tạo Vật tư</h4>
+                            <h4>Tạo nhân viên</h4>
                             <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
-                            <p>Tên vật tư</p>
-                            <input type="text" id="ten-vat-tu" required>
-                            <p class="mt-3">Mô tả</p>
-                            <textarea rows="4" id="mo-ta" required></textarea>
-                            <p>Thương hiệu</p>
-                            <input type="text" id="thuong-hieu" required>
-                            <p>Kích thước</p>
-                            <input type="text" id="kich-thuoc" required>
-                            <p>Danh mục</p>
-
+                            <p>Tên danh mục</p>
+                            <input type="text" id="ten-nhan-vien" required>
+                                                        
                             <fieldset>
+                              <p>Phòng ban</p>
                               <input type="search"
                               autocomplete="off"
                               role="combobox"
                               list=""
-                              id="danh-muc"
+                              id="phong-ban"
                               name="browsers" required>
-                              <datalist id="browsers" role="listbox">
-                                
+                              <datalist id="browsers" role="listbox">                               
                               </datalist>
                             </fieldset>
 
-                            <p>Màu</p>
-                            <input type="text" id="mau" required>
-                            <p>Ảnh</p>
-                            <div class="upload-btn-wrapper">
-                                <i class='bx bx-plus'style="font-size: 24px;"></i>
-                                <span role = "button"> Tải ảnh lên</span>
-                                <input id="anh-vat-tu" type="file" accept="image/png,image/jpg,image/jpeg" >
-                            </div>
-                            <!-- <div id="image-preview-container" style="display: inline-block; margin-left: 10px;">
-                                <img id="preview-img" style="width: 100px; height: 100px;" src="" alt="">
-                            </div> -->
-                            <p>Số lượng</p>
-                            <input id="so-luong" style="width: 100px;" type="number" autocomplete="off" value="0">
+                            <p class="mt-3">Mô tả</p>
+                            <textarea rows="4" id="mo-ta" required></textarea>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
-                            <button onclick="add()" type="button" class="btn btn-info" >Tạo</button>
+                            <button onclick="addOrEdit()" type="button" class="btn btn-info" >Tạo</button>
                           </div>
                     </div>
                 </div>
             </div>
-            <!-- phiếu nhập -->
-            <div class="modal fade" id="modal-nhap">
-              <div class="modal-dialog">
-                  <div class="modal-content">
-                      <div class="modal-header d-flex justify-content-center position-relative">
-                          <h4>Phiếu nhập kho</h4>
-                          <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal"></button>
-                      </div>
-                      <div class="modal-body">
-                      <div class="mb-3">
-                        <button class="them-vat-tu btn btn-info" style="color: white;" onclick="render_nhap()">Thêm vật tư
-
-                        </button>
-                      </div>
-                      <div>
-                        <table style="table-layout: auto;" class="table-phieu-nhap table "
-                        id="render-nhap">
-                          <thead>
-                            <tr>
-                              <th style="width: 40%">Tên vật tư</th>
-                              <th>Số lượng</th>
-                              <th>Hành động</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                             
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
-                          <button type="button" class="btn btn-info" >Nhập</button>
-                        </div>
-                  </div>
-              </div>
-            </div>
         </div>
-        <div class="table-responsive-xl">
+        <div>
             <table class="table-danh-muc table table-hover" id="render">
                 <thead>
                     <tr>
                         <th>STT</th>
                         <th>ID</th>
-                        <th>Tên vật tư</th>
-                        <th class="mo-ta">Mô tả</th>
-                        <th>Số lượng</th>
-                        <th>Thương hiệu</th>
-                        <th>Màu sắc</th>
-                        <th>Kích thước</th>
-                        <th>Danh mục</th>
-                        <th>Ảnh</th>
+                        <th>Tên nhân viên</th>
+                        <th>phòng ban</th>
+                        <th>Mô tả</th>
                         <th>Hành động</th>
                     </tr>
                 </thead>
                 <tbody > 
                     <tr>
+                        <td>1</td>
                         <td>1</td>
                         <td>1</td>
                         <td>1</td>
