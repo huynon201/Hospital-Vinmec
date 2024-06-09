@@ -470,9 +470,44 @@ function render_nhap() {
   updateVatTuDropdowns();
 }
 
+function render_xuat() {
+  const tablebody = document.querySelector("#render-xuat tbody");
+  const row = document.createElement("tr");
+
+  row.innerHTML = `
+    <td>
+      <fieldset>
+        <input type="search"
+          autocomplete="off"
+          role="combobox"
+          list=""
+          id="vat-tu-input"
+          name="vatTuInput" required>
+        <datalist id="vat-tu-dropdown" role="listbox">
+        </datalist>
+      </fieldset>
+    </td>
+    <td>
+      <input id="so-luong-output" type="number" value="1" min="1">
+    </td>
+    <td>
+      <button class="delete-btn btn btn-danger btn-sm">Xóa</button>
+    </td>
+  `;
+
+  tablebody.appendChild(row);
+
+  row.querySelector(".delete-btn").addEventListener("click", () => {
+    tablebody.removeChild(row);
+  });
+
+  // Update dropdowns for all inputs, including the new one
+  updateVatTuDropdowns();
+}
+
 function capNhatSoLuongVatTu() {
   var tenVatTu = document.getElementById("vat-tu-input").value;
-  var soLuong = parseInt(document.getElementById("so-luong-input").value);
+  var soLuongIn = parseInt(document.getElementById("so-luong-input").value);
 
   var vatTuData = localStorage.getItem("vatTuData");
   var vatTuArray = vatTuData ? JSON.parse(vatTuData) : [];
@@ -483,7 +518,7 @@ function capNhatSoLuongVatTu() {
   });
 
   if (vatTu) {
-    vatTu.soLuong = parseInt(vatTu.soLuong) + soLuong; // Ensure soLuong is parsed as integer
+    vatTu.soLuong = parseInt(vatTu.soLuong) + soLuongIn; // Ensure soLuong is parsed as integer
 
     // Lưu lại dữ liệu vào localStorage
     localStorage.setItem("vatTuData", JSON.stringify(vatTuArray));
@@ -499,6 +534,40 @@ function capNhatSoLuongVatTu() {
 document
   .querySelector(".nhap-phieu-kho")
   .addEventListener("click", capNhatSoLuongVatTu);
+
+  document.addEventListener("DOMContentLoaded", (event) => {
+    updateData();
+  });
+
+
+function capNhatSoLuongVatTuOut() {
+  var tenVatTu = document.getElementById("vat-tu-input").value;
+  
+  var soLuongOut = parseInt(document.getElementById("so-luong-output").value);
+
+  var vatTuData = localStorage.getItem("vatTuData");
+  var vatTuArray = vatTuData ? JSON.parse(vatTuData) : [];
+
+  // Tìm vật tư trong mảng
+  var vatTu = vatTuArray.find(function (item) {
+    return item.tenVatTu === tenVatTu;
+  });
+
+  if (vatTu) {
+    vatTu.soLuong = parseInt(vatTu.soLuong) - soLuongOut; // Ensure soLuong is parsed as integer
+
+    // Lưu lại dữ liệu vào localStorage
+    localStorage.setItem("vatTuData", JSON.stringify(vatTuArray));
+
+    // Cập nhật hiển thị
+    updateData();
+  } else {
+    alert("Vật tư không tồn tại.");
+  }
+}
+document
+  .querySelector(".xuat-phieu-kho")
+  .addEventListener("click", capNhatSoLuongVatTuOut);
 
 // Cập nhật dữ liệu ngay khi trang được tải
 document.addEventListener("DOMContentLoaded", (event) => {
