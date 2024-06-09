@@ -18,7 +18,7 @@ const handleResize = () => {
     sidebar.classList.add("locked");
     columContent.classList.remove("closed", "full");
     columContent.classList.add("locked");
-    if(!sidebar.classList.contains("locked")){
+    if (!sidebar.classList.contains("locked")) {
       sidebar.classList.add("hoverable");
       sidebarLockBtn.classList.replace("bx-lock-alt", "bx-lock-open-alt");
     }
@@ -78,83 +78,78 @@ const toggleSidebar = () => {
 
 
 
-//chưc năng login
 $(document).ready(function () {
+  // Xử lý sự kiện click vào nút đăng nhập
   $(".btn-login").click(function (e) {
-      e.preventDefault();
-      var name = $("#name").val();
-      var password = $("#password").val();
-      var errorName = "";
-      var errorPassword = "";
+    e.preventDefault();
+    var name = $("#name").val();
+    var password = $("#password").val();
+    var errorName = "";
+    var errorPassword = "";
 
-      if (name === '') {
-          errorName = 'Tên đăng nhập không được để trống';
-          $(".error-name").text(errorName);
-      } else if (name.length < 6) {
-          errorName = 'Tên đăng nhập ít nhất 6 kí tự';
-          $(".error-name").text(errorName);
-      } else {
-          $(".error-name").text("");
-      }
-
-      if (password === '') {
-          errorPassword = 'Mật khẩu không được để trống';
-          $(".error-password").text(errorPassword);
-      } else if (password.length < 8 || !/[A-Z]/.test(password) || !/\W/.test(password) || !/\d/.test(password)) {
-          errorPassword = "Mật khẩu cần ít nhất 8 ký tự, bao gồm chữ hoa, kí tự đặc biệt và số";
-          $(".error-password").text(errorPassword);
-      } else {
-          $(".error-password").text("");
-      }
-
-      if (name === "huydat" && password === "Huydat201!") {
-          var rememberLogin = $(".text_remember_login input[type='checkbox']").prop("checked");
-
-          if (rememberLogin) {
-              localStorage.setItem("username", name);
-              localStorage.setItem("password", password);
-          } else {
-              localStorage.removeItem("username");
-              localStorage.removeItem("password");
-          }
-
-          window.location.href = "../Trang-chu-admin/Trang-chu-admin.html";
-      }
-      if (name === "doanhvu" && password === "Doanhvu2003@") {
-        var rememberLogin = $(".text_remember_login input[type='checkbox']").prop("checked");
-
-        if (rememberLogin) {
-            localStorage.setItem("username", name);
-            localStorage.setItem("password", password);
-        } else {
-            localStorage.removeItem("username");
-            localStorage.removeItem("password");
-        }
-
-        window.location.href = "../Trang-chu-users/Trang-chu-users.html";
+    if (name === "admin" && password === "Admin@123") {
+      window.location.href = "../Trang-chu-admin/Trang-chu-admin.html";
     }
 
-  });
+    
+    // Kiểm tra lỗi tên đăng nhập
+    if (name === '') {
+      errorName = 'Tên đăng nhập không được để trống';
+      $(".error-name").text(errorName);
+    } else if (name.length < 6) {
+      errorName = 'Tên đăng nhập ít nhất 6 kí tự';
+      $(".error-name").text(errorName);
+    } else {
+      $(".error-name").text("");
+    }
 
-  $(".input_box i").click(function () {
-      var passwordField = $("#password");
-      if (passwordField.attr("type") === "password") {
-          passwordField.attr("type", "text");
-          $(this).removeClass("bi-eye-slash").addClass("bi-eye");
+    // Kiểm tra lỗi mật khẩu
+    if (password === '') {
+      errorPassword = 'Mật khẩu không được để trống';
+      $(".error-password").text(errorPassword);
+    } else if (password.length < 8 || !/[A-Z]/.test(password) || !/\W/.test(password) || !/\d/.test(password)) {
+      errorPassword = "Mật khẩu cần ít nhất 8 ký tự, bao gồm chữ hoa, kí tự đặc biệt và số";
+      $(".error-password").text(errorPassword);
+    } else {
+      $(".error-password").text("");
+    }
+   
+    // Nếu không có lỗi, tiến hành kiểm tra đăng nhập
+    if (errorName === "" && errorPassword === "") {
+      var taiKhoanData = JSON.parse(localStorage.getItem('taiKhoanData')) || [];
+      const user = taiKhoanData.find(item => item.tenDangNhap === name && item.matKhau === password);
+      // Điều hướng đến trang phù hợp tùy thuộc vào vai trò của người dùng
+      if (user) {   
+        window.location.href = "../Trang-chu-users/Trang-chu-users.html";
       } else {
-          passwordField.attr("type", "password");
-          $(this).removeClass("bi-eye").addClass("bi-eye-slash");
+        alert("Tên đăng nhập hoặc mật khẩu không đúng.");
       }
+    }
   });
 
+  // Xử lý sự kiện click vào biểu tượng mắt để hiển thị hoặc ẩn mật khẩu
+  $(".input_box i").click(function () {
+    var passwordField = $("#password");
+    if (passwordField.attr("type") === "password") {
+      passwordField.attr("type", "text");
+      $(this).removeClass("bi-eye-slash").addClass("bi-eye");
+    } else {
+      passwordField.attr("type", "password");
+      $(this).removeClass("bi-eye").addClass("bi-eye-slash");
+    }
+  });
+
+  // Tự động điền thông tin đăng nhập nếu đã lưu trước đó
   var savedUsername = localStorage.getItem("username");
   var savedPassword = localStorage.getItem("password");
   if (savedUsername && savedPassword) {
-      $("#name").val(savedUsername);
-      $("#password").val(savedPassword);
-      $(".text_remember_login input[type='checkbox']").prop("checked", true);
+    $("#name").val(savedUsername);
+    $("#password").val(savedPassword);
+    $(".text_remember_login input[type='checkbox']").prop("checked", true);
   }
 });
+
+
 // Adding event listeners to buttons and sidebar for the corresponding actions
 sidebarLockBtn.addEventListener("click", toggleLock);
 sidebar.addEventListener("mouseleave", hideSidebar);
@@ -170,6 +165,6 @@ const openLoginButton = document.getElementById('openLogin');
 const closeModalSpan = document.getElementsByClassName('close')[0];
 
 // Hiển thị modal đăng nhập khi nhấn nút "Đăng nhập"
-openLoginButton.onclick = function() {
-    loginModal.style.display = 'block';
+openLoginButton.onclick = function () {
+  loginModal.style.display = 'block';
 }

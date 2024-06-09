@@ -84,8 +84,6 @@ sidebarCloseBtn.addEventListener("click", toggleSidebar);
 // Initial call to handle resize
 handleResize();
 
-  
-
 let data = JSON.parse(localStorage.getItem("vatTuData")) || [];
 let currentEditIndex = null;
 
@@ -120,7 +118,7 @@ input.oninput = function () {
   }
 };
 
-input.onchange = function() {
+input.onchange = function () {
   let val = input.value;
   let opts = browsers.options;
   for (let i = 0; i < opts.length; i++) {
@@ -163,11 +161,11 @@ function removeActive(x) {
 
 function updateDanhMucDropdown() {
   const danhMucDropdown = document.getElementById("browsers");
-  const dataDanhMuc = JSON.parse(localStorage.getItem('danhMucData')) || [];
-  
-  danhMucDropdown.innerHTML = ""; 
+  const dataDanhMuc = JSON.parse(localStorage.getItem("danhMucData")) || [];
 
-  dataDanhMuc.forEach(item => {
+  danhMucDropdown.innerHTML = "";
+
+  dataDanhMuc.forEach((item) => {
     const option = document.createElement("option");
     option.value = item.tenDanhMuc;
     option.textContent = item.tenDanhMuc;
@@ -181,8 +179,7 @@ function updateDanhMucDropdown() {
   });
 }
 
-
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   updateDanhMucDropdown(); // Gọi hàm này khi trang được tải để cập nhật datalist
 });
 
@@ -198,7 +195,7 @@ if (data.length === 0) {
       mauSac: "Trắng",
       kichThuoc: "15 cm",
       tenDanhMuc: "danh mục 1",
-      anhVatTu: "../Assets/content/supplies/kim-tiem.png"
+      anhVatTu: "../Assets/content/supplies/kim-tiem.png",
     },
     {
       id: Date.now() + 1,
@@ -209,8 +206,8 @@ if (data.length === 0) {
       mauSac: "Xanh",
       kichThuoc: "11 cm",
       tenDanhMuc: "danh mục 1",
-      anhVatTu: "../Assets/content/supplies/khau-trang.png"
-    }
+      anhVatTu: "../Assets/content/supplies/khau-trang.png",
+    },
   ];
   saveData();
 }
@@ -264,8 +261,8 @@ function addOrEdit() {
   if (anhVatTuInput.files.length > 0) {
     const file = anhVatTuInput.files[0];
     const reader = new FileReader();
-    
-    reader.onload = function(e) {
+
+    reader.onload = function (e) {
       newItem.anhVatTu = e.target.result;
       if (currentEditIndex !== null) {
         data[currentEditIndex] = newItem;
@@ -279,7 +276,8 @@ function addOrEdit() {
 
     reader.readAsDataURL(file);
   } else {
-    newItem.anhVatTu = currentEditIndex !== null ? data[currentEditIndex].anhVatTu : ""; // Giữ nguyên ảnh nếu không chọn ảnh mới
+    newItem.anhVatTu =
+      currentEditIndex !== null ? data[currentEditIndex].anhVatTu : ""; // Giữ nguyên ảnh nếu không chọn ảnh mới
     if (currentEditIndex !== null) {
       data[currentEditIndex] = newItem;
       currentEditIndex = null;
@@ -344,15 +342,11 @@ function deleteItem(index) {
   }
 }
 
-
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   render();
   const addBtn = document.querySelector(".modal-footer .btn-info");
   addBtn.onclick = addOrEdit;
 });
-
-
-
 
 document.addEventListener("DOMContentLoaded", function () {
   // Initial call to populate the datalist for existing inputs
@@ -365,12 +359,12 @@ function updateVatTuDropdowns() {
   // Find all input elements with id "vat-tu-input"
   const vatTuInputs = document.querySelectorAll("#vat-tu-input");
 
-  vatTuInputs.forEach(vatTuInput => {
+  vatTuInputs.forEach((vatTuInput) => {
     const vatTuDropdown = vatTuInput.nextElementSibling;
 
     vatTuDropdown.innerHTML = "";
 
-    dataVatTu.forEach(item => {
+    dataVatTu.forEach((item) => {
       const option = document.createElement("option");
       option.value = item.tenVatTu;
       option.textContent = item.tenVatTu;
@@ -419,7 +413,8 @@ function updateVatTuDropdowns() {
       } else if (e.keyCode === 13) {
         e.preventDefault();
         if (currentFocus > -1) {
-          if (vatTuDropdown.options) vatTuDropdown.options[currentFocus].click();
+          if (vatTuDropdown.options)
+            vatTuDropdown.options[currentFocus].click();
         }
       }
 
@@ -458,7 +453,7 @@ function render_nhap() {
       </fieldset>
     </td>
     <td>
-      <input type="number" value="1" min="1">
+      <input id="so-luong-input" type="number" value="1" min="1">
     </td>
     <td>
       <button class="delete-btn btn btn-danger btn-sm">Xóa</button>
@@ -467,6 +462,48 @@ function render_nhap() {
 
   tablebody.appendChild(row);
 
+  row.querySelector(".delete-btn").addEventListener("click", () => {
+    tablebody.removeChild(row);
+  });
+
   // Update dropdowns for all inputs, including the new one
   updateVatTuDropdowns();
 }
+
+function capNhatSoLuongVatTu() {
+  var tenVatTu = document.getElementById("vat-tu-input").value;
+  var soLuong = parseInt(document.getElementById("so-luong-input").value);
+
+  var vatTuData = localStorage.getItem("vatTuData");
+  var vatTuArray = vatTuData ? JSON.parse(vatTuData) : [];
+
+  // Tìm vật tư trong mảng
+  var vatTu = vatTuArray.find(function (item) {
+    return item.tenVatTu === tenVatTu;
+  });
+
+  if (vatTu) {
+    vatTu.soLuong = parseInt(vatTu.soLuong) + soLuong; // Ensure soLuong is parsed as integer
+
+    // Lưu lại dữ liệu vào localStorage
+    localStorage.setItem("vatTuData", JSON.stringify(vatTuArray));
+
+    // Cập nhật hiển thị
+    updateData();
+  } else {
+    alert("Vật tư không tồn tại.");
+  }
+}
+
+// Gán sự kiện click cho nút "Cập nhật"
+document
+  .querySelector(".nhap-phieu-kho")
+  .addEventListener("click", capNhatSoLuongVatTu);
+
+// Cập nhật dữ liệu ngay khi trang được tải
+document.addEventListener("DOMContentLoaded", (event) => {
+  updateData();
+});
+
+// Định kỳ kiểm tra dữ liệu mỗi 1 giây
+setInterval(updateData, 1000);

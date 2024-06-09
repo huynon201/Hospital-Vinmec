@@ -90,3 +90,38 @@ document.querySelector('.card.col').addEventListener('click', function() {
   var myModal = new bootstrap.Modal(document.getElementById('myModal'));
   myModal.show();
 });
+
+function updateData() {
+  var vatTuData = localStorage.getItem("vatTuData");
+  if (!vatTuData) return; // Kiểm tra xem có dữ liệu không
+
+  var vatTuArray = JSON.parse(vatTuData);
+
+  // Tạo một đối tượng để lưu trữ số lượng của từng vật tư
+  var soLuongVatTu = {};
+
+  vatTuArray.forEach(function (item) {
+    soLuongVatTu[item.tenVatTu] = parseInt(item.soLuong);
+  });
+
+  // Lấy tất cả các phần tử có class là 'number-vat-tu'
+  var numberVatTuElements = document.querySelectorAll('.number-vat-tu');
+
+  // Cập nhật nội dung của từng phần tử
+  numberVatTuElements.forEach(function (element) {
+    var tenVatTu = element.getAttribute('data-name');
+    if (soLuongVatTu[tenVatTu] !== undefined) {
+      element.innerText = soLuongVatTu[tenVatTu];
+    } else {
+      element.innerText = 0; // Nếu không có số lượng, đặt mặc định là 0
+    }
+  });
+}
+
+// Cập nhật dữ liệu ngay khi trang được tải
+document.addEventListener('DOMContentLoaded', (event) => {
+  updateData();
+});
+
+// Định kỳ kiểm tra dữ liệu mỗi 1 giây
+setInterval(updateData, 1000);
