@@ -194,7 +194,7 @@ if (data.length === 0) {
       thuongHieu: "Vinahankook",
       mauSac: "Trắng",
       kichThuoc: "15 cm",
-      tenDanhMuc: "danh mục 1",
+      tenDanhMuc: "Vật dụng y tế",
       anhVatTu: "../Assets/content/supplies/kim-tiem.png",
     },
     {
@@ -205,7 +205,7 @@ if (data.length === 0) {
       thuongHieu: "Unicharm",
       mauSac: "Xanh",
       kichThuoc: "11 cm",
-      tenDanhMuc: "danh mục 1",
+      tenDanhMuc: "Vật dụng y tế",
       anhVatTu: "../Assets/content/supplies/khau-trang.png",
     },
   ];
@@ -504,6 +504,34 @@ function render_xuat() {
   // Update dropdowns for all inputs, including the new one
   updateVatTuDropdowns();
 }
+document.addEventListener("DOMContentLoaded", function () {
+  // Existing code...
+  // Function to clear the table with id "render-nhap"
+  function clearTable() {
+      const tableBody = document.querySelector("#render-nhap tbody");
+      tableBody.innerHTML = ""; // Clear the table body content
+      
+  }
+
+  // Attach the function to the "Nhập" button click event
+  document.querySelector(".nhap-phieu-kho").addEventListener("click", clearTable);
+  // Other existing JavaScript code...
+  
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Existing code...
+  // Function to clear the table with id "render-nhap"
+  function clearTable() {
+      const tableBody = document.querySelector("#render-xuat tbody");
+      tableBody.innerHTML = ""; // Clear the table body content
+      
+  }
+
+  // Attach the function to the "Nhập" button click event
+  document.querySelector(".xuat-phieu-kho").addEventListener("click", clearTable);
+  // Other existing JavaScript code...
+});
 
 function capNhatSoLuongVatTu() {
   var tenVatTu = document.getElementById("vat-tu-input").value;

@@ -93,8 +93,8 @@ function saveData() {
 // Initialize default data if localStorage is empty
 if (data.length === 0) {
   data = [
-    { id: Date.now(), tenDanhMuc: "Danh Mục 1", moTa: "Mô tả danh mục 1" },
-    { id: Date.now() + 1, tenDanhMuc: "Danh Mục 2", moTa: "Mô tả danh mục 2" }
+    { id: Date.now(), tenDanhMuc: "Thiết bị y tế", moTa: "Danh mục thiết bị y tế bệnh viện VinMec" },
+    { id: Date.now() + 1, tenDanhMuc: "Vật dụng y tế", moTa: "Danh mục vật dụng y tế" }
   ];
   saveData();
 }
