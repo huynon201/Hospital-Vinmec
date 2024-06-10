@@ -91,7 +91,6 @@ $(document).ready(function () {
       window.location.href = "../Trang-chu-admin/Trang-chu-admin.html";
     }
 
-    
     // Kiểm tra lỗi tên đăng nhập
     if (name === '') {
       errorName = 'Tên đăng nhập không được để trống';
@@ -120,6 +119,13 @@ $(document).ready(function () {
       const user = taiKhoanData.find(item => item.tenDangNhap === name && item.matKhau === password);
       // Điều hướng đến trang phù hợp tùy thuộc vào vai trò của người dùng
       if (user) {   
+        if ($(".text_remember_login input[type='checkbox']").is(':checked')) {
+          localStorage.setItem("username", name);
+          localStorage.setItem("password", password);
+        } else {
+          localStorage.removeItem("username");
+          localStorage.removeItem("password");
+        }
         window.location.href = "../Trang-chu-users/Trang-chu-users.html";
       } else {
         alert("Tên đăng nhập hoặc mật khẩu không đúng.");
@@ -145,7 +151,7 @@ $(document).ready(function () {
   if (savedUsername && savedPassword) {
     $("#name").val(savedUsername);
     $("#password").val(savedPassword);
-    $(".text_remember_login input[type='checkbox']").prop("checked", true);
+$(".text_remember_login input[type='checkbox']").prop("checked", true);
   }
 });
 
