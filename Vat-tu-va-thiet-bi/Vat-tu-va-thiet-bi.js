@@ -589,6 +589,7 @@ document
     updateData();
   });
 
+  
 
 function capNhatSoLuongVatTuOut() {
   var tenVatTu = document.getElementById("vat-tu-input").value;
@@ -624,5 +625,66 @@ document.addEventListener("DOMContentLoaded", (event) => {
   updateData();
 });
 
-// Định kỳ kiểm tra dữ liệu mỗi 1 giây
-setInterval(updateData, 1000);
+function getCurrentDate() {
+  const date = new Date();
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+}
+
+
+function saveInputData() {
+  // Lấy dữ liệu exData hiện tại từ localStorage, nếu có
+  let exData = JSON.parse(localStorage.getItem("exData")) || [];
+
+  // Chọn tất cả các input có id="vat-tu-input" và "soLuongVatTuNhap"
+  const vatTuInputElements = document.querySelectorAll("#vat-tu-input");
+  const soLuongInputElements = document.querySelectorAll("#so-luong-input");
+  const tenPhieuNhapKho = document.querySelectorAll("#name-phieu-nhap-kho")
+  const ngayNhap = getCurrentDate();
+
+  // Duyệt qua tất cả các input và lưu dữ liệu vào exData
+  vatTuInputElements.forEach((vatTuInput, index) => {
+    const vatTuValue = vatTuInput.value;
+    const soLuongValue = soLuongInputElements[index].value;
+    const ngayNhapValue = ngayNhap;
+    const tenPhieuNhapKhoValue = tenPhieuNhapKho;
+    const idValue = Date.now();
+    exData.push({ id: idValue,  vatTu: vatTuValue, soLuong: soLuongValue, ngayNhap: ngayNhapValue, tenPhieuNhap: tenPhieuNhapKhoValue});
+  });
+
+  // Lưu exData vào localStorage
+  localStorage.setItem("exData", JSON.stringify(exData));
+    // Hiển thị thông báo nhập hàng thành công
+  const alertDiv = document.createElement("div");
+  alertDiv.classList.add(
+    "alert",
+    "alert-success",
+    "alert-dismissible",
+    "fade",
+    "show",
+    "alert-container"
+  ); // Thêm lớp alert-container
+  alertDiv.setAttribute("role", "alert");
+  alertDiv.innerHTML = `
+      Nhập hàng thành công! 
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  `;
+  document.body.appendChild(alertDiv);
+
+  // Thêm sự kiện click cho nút đóng thông báo
+  const closeButton = alertDiv.querySelector(".btn-close");
+  closeButton.addEventListener("click", function () {
+    alertDiv.remove();
+  });
+
+  // Tự động tắt thông báo sau 3 giây
+  setTimeout(function () {
+    alertDiv.remove();
+  }, 1000);
+
+}
+
+// Sử dụng ví dụ: Gọi hàm này khi nhấn nút với id="importButton"
+document.getElementById("importButton").addEventListener("click", saveInputData);
