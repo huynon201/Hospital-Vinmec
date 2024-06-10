@@ -530,28 +530,29 @@ document.addEventListener("DOMContentLoaded", function () {
   // Existing code...
   // Function to clear the table with id "render-nhap"
   function clearTable() {
-      const tableBody = document.querySelector("#render-nhap tbody");
-      tableBody.innerHTML = ""; // Clear the table body content
-      
+    const tableBody = document.querySelector("#render-nhap tbody");
+    tableBody.innerHTML = ""; // Clear the table body content
   }
 
   // Attach the function to the "Nhập" button click event
-  document.querySelector(".nhap-phieu-kho").addEventListener("click", clearTable);
+  document
+    .querySelector(".nhap-phieu-kho")
+    .addEventListener("click", clearTable);
   // Other existing JavaScript code...
-  
 });
 
 document.addEventListener("DOMContentLoaded", function () {
   // Existing code...
   // Function to clear the table with id "render-nhap"
   function clearTable() {
-      const tableBody = document.querySelector("#render-xuat tbody");
-      tableBody.innerHTML = ""; // Clear the table body content
-      
+    const tableBody = document.querySelector("#render-xuat tbody");
+    tableBody.innerHTML = ""; // Clear the table body content
   }
 
   // Attach the function to the "Nhập" button click event
-  document.querySelector(".xuat-phieu-kho").addEventListener("click", clearTable);
+  document
+    .querySelector(".xuat-phieu-kho")
+    .addEventListener("click", clearTable);
   // Other existing JavaScript code...
 });
 
@@ -585,15 +586,13 @@ document
   .querySelector(".nhap-phieu-kho")
   .addEventListener("click", capNhatSoLuongVatTu);
 
-  document.addEventListener("DOMContentLoaded", (event) => {
-    updateData();
-  });
-
-  
+document.addEventListener("DOMContentLoaded", (event) => {
+  updateData();
+});
 
 function capNhatSoLuongVatTuOut() {
   var tenVatTu = document.getElementById("vat-tu-input").value;
-  
+
   var soLuongOut = parseInt(document.getElementById("so-luong-output").value);
 
   var vatTuData = localStorage.getItem("vatTuData");
@@ -627,12 +626,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 function getCurrentDate() {
   const date = new Date();
-  const day = String(date.getDate()).padStart(2, '0');
-  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
   const year = date.getFullYear();
   return `${day}/${month}/${year}`;
 }
-
 
 function saveInputData() {
   // Lấy dữ liệu exData hiện tại từ localStorage, nếu có
@@ -641,22 +639,34 @@ function saveInputData() {
   // Chọn tất cả các input có id="vat-tu-input" và "soLuongVatTuNhap"
   const vatTuInputElements = document.querySelectorAll("#vat-tu-input");
   const soLuongInputElements = document.querySelectorAll("#so-luong-input");
-  const tenPhieuNhapKho = document.querySelectorAll("#name-phieu-nhap-kho")
+  const tenPhieuNhapKho = document.querySelector("#name-phieu-nhap-kho"); // Sử dụng querySelector để lấy một phần tử duy nhất
   const ngayNhap = getCurrentDate();
 
-  // Duyệt qua tất cả các input và lưu dữ liệu vào exData
-  vatTuInputElements.forEach((vatTuInput, index) => {
-    const vatTuValue = vatTuInput.value;
-    const soLuongValue = soLuongInputElements[index].value;
-    const ngayNhapValue = ngayNhap;
-    const tenPhieuNhapKhoValue = tenPhieuNhapKho;
-    const idValue = Date.now();
-    exData.push({ id: idValue,  vatTu: vatTuValue, soLuong: soLuongValue, ngayNhap: ngayNhapValue, tenPhieuNhap: tenPhieuNhapKhoValue});
-  });
+  // Kiểm tra xem có phần tử #name-phieu-nhap-kho không
+  if (tenPhieuNhapKho) {
+    // Duyệt qua tất cả các input và lưu dữ liệu vào exData
+    vatTuInputElements.forEach((vatTuInput, index) => {
+      const vatTuValue = vatTuInput.value;
+      const soLuongValue = soLuongInputElements[index].value;
+      const ngayNhapValue = ngayNhap;
+      const tenPhieuNhapKhoValue = tenPhieuNhapKho.value; // Lấy giá trị từ phần tử duy nhất
+      const idValue = Date.now();
+      exData.push({
+        id: idValue,
+        vatTu: vatTuValue,
+        soLuong: soLuongValue,
+        ngayNhap: ngayNhapValue,
+        tenPhieuNhap: tenPhieuNhapKhoValue,
+      });
+    });
+  } else {
+    console.error("Không tìm thấy phần tử có id là 'name-phieu-nhap-kho'");
+  }
 
-  // Lưu exData vào localStorage
+  // Lưu dữ liệu vào localStorage
   localStorage.setItem("exData", JSON.stringify(exData));
-    // Hiển thị thông báo nhập hàng thành công
+
+  // Hiển thị thông báo nhập hàng thành công
   const alertDiv = document.createElement("div");
   alertDiv.classList.add(
     "alert",
@@ -665,13 +675,16 @@ function saveInputData() {
     "fade",
     "show",
     "alert-container"
-  ); // Thêm lớp alert-container
+  );
   alertDiv.setAttribute("role", "alert");
   alertDiv.innerHTML = `
-      Nhập hàng thành công! 
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  `;
-  document.body.appendChild(alertDiv);
+    Nhập hàng thành công! 
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+`;
+
+  // Thêm thông báo vào container ở đầu trang
+  const alertContainer = document.getElementById("alert-container");
+  alertContainer.appendChild(alertDiv);
 
   // Thêm sự kiện click cho nút đóng thông báo
   const closeButton = alertDiv.querySelector(".btn-close");
@@ -682,13 +695,21 @@ function saveInputData() {
   // Tự động tắt thông báo sau 3 giây
   setTimeout(function () {
     alertDiv.remove();
-  }, 1000);
+  }, 3000); // Thời gian chờ 3 giây để người dùng có thể nhìn thấy thông báo
 
+  // Kiểm tra xem phần tử alertDiv có được thêm vào DOM hay không
+  console.log("Alert div added:", alertContainer.contains(alertDiv));
 }
 
 // Sử dụng ví dụ: Gọi hàm này khi nhấn nút với id="importButton"
-document.getElementById("importButton").addEventListener("click", saveInputData);
+document
+  .getElementById("importButton")
+  .addEventListener("click", saveInputData);
 
+// Sử dụng ví dụ: Gọi hàm này khi nhấn nút với id="importButton"
+document
+  .getElementById("importButton")
+  .addEventListener("click", saveInputData);
 
 const inputPhongBan = document.getElementById("phong-ban-nhan");
 const brPhongBanNhan = document.getElementById("br-phong-ban-nhan");
@@ -781,8 +802,6 @@ function updatePhongBanDropdown() {
 document.addEventListener("DOMContentLoaded", function () {
   updatePhongBanDropdown(); // Gọi hàm này khi trang được tải để cập nhật datalist
 });
-
-
 
 const inputNhanVien = document.getElementById("nhan-vien-nhan");
 const brNhanVien = document.getElementById("br-nhan-vien-nhan");

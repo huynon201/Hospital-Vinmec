@@ -1,4 +1,3 @@
-
 const sidebar = document.querySelector(".sidebar");
 const sidebarOpenBtn = document.querySelector("#sidebar-open");
 const sidebarCloseBtn = document.querySelector("#sidebar-close");
@@ -18,17 +17,16 @@ const handleResize = () => {
     sidebar.classList.add("locked");
     columContent.classList.remove("closed", "full");
     columContent.classList.add("locked");
-    if(!sidebar.classList.contains("locked")){
+    if (!sidebar.classList.contains("locked")) {
       sidebar.classList.add("hoverable");
       sidebarLockBtn.classList.replace("bx-lock-alt", "bx-lock-open-alt");
-    }
-    else {
+    } else {
       sidebar.classList.remove("hoverable");
       sidebarLockBtn.classList.replace("bx-lock-open-alt", "bx-lock-alt");
     }
   }
 };
-window.addEventListener('resize', handleResize);
+window.addEventListener("resize", handleResize);
 handleResize();
 // Function to toggle the lock state of the sidebar
 const toggleLock = () => {
@@ -100,9 +98,15 @@ function generateRandomID() {
 
 // Hàm thêm mới một mục vào data và lưu vào localStorage
 function addNewItem(id, tenPhieuNhap, ngayNhap) {
+  // Kiểm tra nếu tenPhieuNhap là một đối tượng và ghi log để debug
+  if (typeof tenPhieuNhap === "object") {
+    console.error("tenPhieuNhap là một đối tượng:", tenPhieuNhap);
+  }
+
+  // Đảm bảo rằng tenPhieuNhap là một chuỗi
   const newItem = {
     id, // Gán id duy nhất
-    tenPhieuNhap,
+    tenPhieuNhap: String(tenPhieuNhap),
     ngayNhap,
   };
   data.push(newItem);
@@ -125,8 +129,58 @@ function render() {
   });
 }
 
-
 // Gọi hàm render để hiển thị dữ liệu khi trang được tải
 document.addEventListener("DOMContentLoaded", render);
 
 // Ví dụ thêm một mục mới (bạn có thể gọi hàm này từ một sự kiện như click vào nút "Thêm")
+function initializeData() {
+  var exData = localStorage.getItem("exData");
+  if (!exData) return;
+
+  var vatTuArray = JSON.parse(exData);
+  var tbody = document.querySelector("#render tbody");
+  tbody.innerHTML = "";
+
+  document.querySelectorAll(".modal").forEach(function (modal) {
+    modal.remove();
+  });
+
+  vatTuArray.forEach(function (item, index) {
+    var rowHTML = `
+          <tr data-bs-toggle="modal" data-bs-target="#modal-${item.id}">
+              <td>${index + 1}</td>
+              <td>${item.id}</td>
+              <td>${item.tenPhieuNhap}</td>
+              <td>${item.ngayNhap}</td>
+          </tr>
+      `;
+
+    var modalHTML = `
+          <div class="modal fade" id="modal-${item.id}" tabindex="-1" aria-labelledby="modalLabel-${item.id}" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h4 class="modal-title" style="width: 100%;text-align: center; " id="modalLabel-${item.id}">Phiếu Nhập</h4>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body ">
+                          <p class="p-1">Tên phiếu nhập</p>
+                          <p class="bg-light p-3 rounded">${item.tenPhieuNhap}</p>
+                          <p class="p-1">Ngày nhập</p>
+                          <p class="bg-light p-3 rounded">${item.ngayNhap}</p>
+                          <p class="p-1">Vật tư xuất</p>
+                          <p class="bg-light p-3 rounded" >${item.vatTu}</p>
+                          <p class="p-1">Số lượng</p>
+                          <p class="bg-light p-3 rounded">${item.soLuong}</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      `;
+
+    tbody.insertAdjacentHTML("beforeend", rowHTML);
+    document.body.insertAdjacentHTML("beforeend", modalHTML);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", initializeData);

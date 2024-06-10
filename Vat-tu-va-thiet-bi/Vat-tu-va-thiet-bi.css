@@ -256,6 +256,9 @@ body {
   .btn-out {
     display: none;
   }
+  #YeuCau {
+    display: none;
+  }
 }
 .sidebar .menu-item {
   padding: 0 !important;

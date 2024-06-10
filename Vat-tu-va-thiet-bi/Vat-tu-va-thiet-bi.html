@@ -36,6 +36,25 @@
     ></script>
     <link rel="stylesheet" href="Vat-tu-va-thiet-bi.css" />
     <script src="Vat-tu-va-thiet-bi.js" defer></script>
+    <style>
+
+      #alert-container {
+
+        position: fixed;
+
+        top: 0;
+
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        z-index: 1000;
+
+        width: auto; /* Tự động điều chỉnh kích thước dựa trên nội dung */
+
+      }
+
+    </style>
   </head>
   <body>
     <div class="row">
@@ -543,6 +562,7 @@
         </div>
       </div>
     </div>
+    <div id="alert-container"></div>
     <script>
       let dataPb = JSON.parse(localStorage.getItem("YeuCauData")) || [];
 
