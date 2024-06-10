@@ -194,7 +194,7 @@ if (data.length === 0) {
       thuongHieu: "Vinahankook",
       mauSac: "Trắng",
       kichThuoc: "15 cm",
-      tenDanhMuc: "Vật dụng y tế",
+      tenDanhMuc: "Thiết bị y tế",
       anhVatTu: "../Assets/content/supplies/kim-tiem.png",
     },
     {
@@ -207,6 +207,28 @@ if (data.length === 0) {
       kichThuoc: "11 cm",
       tenDanhMuc: "Vật dụng y tế",
       anhVatTu: "../Assets/content/supplies/khau-trang.png",
+    },
+    {
+      id: Date.now() + 2,
+      tenVatTu: "Áo Bluose",
+      moTa: "Áo dành cho các bác sĩ",
+      soLuong: "1",
+      thuongHieu: "Vinkook",
+      mauSac: "Trắng",
+      kichThuoc: "1m4",
+      tenDanhMuc: "Vật dụng y tế",
+      anhVatTu: "../Assets/content/supplies/ao-blue.png",
+    },
+    {
+      id: Date.now() + 3,
+      tenVatTu: "Áo Phẫu Thuật",
+      moTa: "Áo dành cho bác sĩ phẫu thuật",
+      soLuong: "1",
+      thuongHieu: "Biotech",
+      mauSac: "Xanh",
+      kichThuoc: "1m10",
+      tenDanhMuc: "Vật dụng y tế",
+      anhVatTu: "../Assets/content/supplies/ao-phau-thuat.png",
     },
   ];
   saveData();
