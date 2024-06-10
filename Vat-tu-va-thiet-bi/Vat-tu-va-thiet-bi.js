@@ -688,3 +688,190 @@ function saveInputData() {
 
 // Sử dụng ví dụ: Gọi hàm này khi nhấn nút với id="importButton"
 document.getElementById("importButton").addEventListener("click", saveInputData);
+
+
+const inputPhongBan = document.getElementById("phong-ban-nhan");
+const brPhongBanNhan = document.getElementById("br-phong-ban-nhan");
+
+inputPhongBan.onfocus = function () {
+  brPhongBanNhan.style.display = "block";
+  inputPhongBan.style.borderRadius = "5px 5px 0 0";
+};
+
+inputPhongBan.onblur = function () {
+  setTimeout(() => {
+    brPhongBanNhan.style.display = "none";
+    inputPhongBan.style.borderRadius = "5px";
+  }, 100);
+};
+
+inputPhongBan.oninput = function () {
+  currentFocus = -1;
+  var text = inputPhongBan.value.toUpperCase();
+  for (let option of brPhongBanNhan.options) {
+    if (option.value.toUpperCase().indexOf(text) > -1) {
+      option.style.display = "block";
+    } else {
+      option.style.display = "none";
+    }
+  }
+};
+
+inputPhongBan.onchange = function () {
+  let val = inputPhongBan.value;
+  let opts = brPhongBanNhan.options;
+  for (let i = 0; i < opts.length; i++) {
+    if (opts[i].value === val) {
+      inputPhongBan.value = opts[i].value;
+      break;
+    }
+  }
+};
+
+var currentFocus = -1;
+inputPhongBan.onkeydown = function (e) {
+  if (e.keyCode == 40) {
+    currentFocus++;
+    addActive(brPhongBanNhan.options);
+  } else if (e.keyCode == 38) {
+    currentFocus--;
+    addActive(brPhongBanNhan.options);
+  } else if (e.keyCode == 13) {
+    e.preventDefault();
+    if (currentFocus > -1) {
+      if (brPhongBanNhan.options) brPhongBanNhan.options[currentFocus].click();
+    }
+  }
+};
+
+function addActive(x) {
+  if (!x) return false;
+  removeActive(x);
+  if (currentFocus >= x.length) currentFocus = 0;
+  if (currentFocus < 0) currentFocus = x.length - 1;
+  x[currentFocus].classList.add("active");
+}
+
+function removeActive(x) {
+  for (var i = 0; i < x.length; i++) {
+    x[i].classList.remove("active");
+  }
+}
+
+function updatePhongBanDropdown() {
+  const phongBanDropdown = document.getElementById("br-phong-ban-nhan");
+  const dataDanhMuc = JSON.parse(localStorage.getItem("phongBanData")) || [];
+
+  phongBanDropdown.innerHTML = "";
+
+  dataDanhMuc.forEach((item) => {
+    const option = document.createElement("option");
+    option.value = item.tenPhongBan;
+    option.textContent = item.tenPhongBan;
+    phongBanDropdown.appendChild(option);
+
+    option.onclick = function () {
+      inputPhongBan.value = item.tenPhongBan;
+      brPhongBanNhan.style.display = "none";
+      inputPhongBan.style.borderRadius = "5px";
+    };
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  updatePhongBanDropdown(); // Gọi hàm này khi trang được tải để cập nhật datalist
+});
+
+
+
+const inputNhanVien = document.getElementById("nhan-vien-nhan");
+const brNhanVien = document.getElementById("br-nhan-vien-nhan");
+
+inputNhanVien.onfocus = function () {
+  brNhanVien.style.display = "block";
+  inputNhanVien.style.borderRadius = "5px 5px 0 0";
+};
+
+inputNhanVien.onblur = function () {
+  setTimeout(() => {
+    brNhanVien.style.display = "none";
+    inputNhanVien.style.borderRadius = "5px";
+  }, 100);
+};
+
+inputNhanVien.oninput = function () {
+  currentFocus = -1;
+  var text = inputNhanVien.value.toUpperCase();
+  for (let option of brNhanVien.options) {
+    if (option.value.toUpperCase().indexOf(text) > -1) {
+      option.style.display = "block";
+    } else {
+      option.style.display = "none";
+    }
+  }
+};
+
+inputNhanVien.onchange = function () {
+  let val = inputNhanVien.value;
+  let opts = brNhanVien.options;
+  for (let i = 0; i < opts.length; i++) {
+    if (opts[i].value === val) {
+      inputNhanVien.value = opts[i].value;
+      break;
+    }
+  }
+};
+
+var currentFocus = -1;
+inputNhanVien.onkeydown = function (e) {
+  if (e.keyCode == 40) {
+    currentFocus++;
+    addActive(brNhanVien.options);
+  } else if (e.keyCode == 38) {
+    currentFocus--;
+    addActive(brNhanVien.options);
+  } else if (e.keyCode == 13) {
+    e.preventDefault();
+    if (currentFocus > -1) {
+      if (brNhanVien.options) brNhanVien.options[currentFocus].click();
+    }
+  }
+};
+
+function addActive(x) {
+  if (!x) return false;
+  removeActive(x);
+  if (currentFocus >= x.length) currentFocus = 0;
+  if (currentFocus < 0) currentFocus = x.length - 1;
+  x[currentFocus].classList.add("active");
+}
+
+function removeActive(x) {
+  for (var i = 0; i < x.length; i++) {
+    x[i].classList.remove("active");
+  }
+}
+
+function updateNhanVienDropdown() {
+  const nhanVienDropdown = document.getElementById("br-nhan-vien-nhan");
+  const dataDanhMuc = JSON.parse(localStorage.getItem("nhanVienData")) || [];
+
+  nhanVienDropdown.innerHTML = "";
+
+  dataDanhMuc.forEach((item) => {
+    const option = document.createElement("option");
+    option.value = item.tenNhanVien;
+    option.textContent = item.tenNhanVien;
+    nhanVienDropdown.appendChild(option);
+
+    option.onclick = function () {
+      inputNhanVien.value = item.tenNhanVien;
+      brNhanVien.style.display = "none";
+      inputNhanVien.style.borderRadius = "5px";
+    };
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  updateNhanVienDropdown(); // Gọi hàm này khi trang được tải để cập nhật datalist
+});

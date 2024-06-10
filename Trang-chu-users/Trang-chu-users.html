@@ -26,6 +26,7 @@
       rel="stylesheet"
     />
     <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="Trang-chu-users.css" />
     <script src="Trang-chu-users.js" defer></script>
   </head>
@@ -67,7 +68,7 @@
                 <li class="item">
                   <a href="#" class="link flex">
                     <i class="bx bxs-send"></i>
-                    <span>  Yêu cầu sử dụng vật tư</span>
+                    <span id="nhap" type="button" class="m-2 rounded-2" data-bs-toggle="modal" data-bs-target="#modal-nhap">Yêu cầu sử dụng vật tư</span>
                   </a>
                 </li>
             </div>
@@ -439,6 +440,50 @@
             </div>
           </div>
         </div>
+        
+      </div>
+
+    </div>
+    <div class="modal fade" id="modal-nhap">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header d-flex justify-content-center position-relative">
+                  <h4>Phiếu yêu cầu</h4>
+                  <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+              <div class="mb-3">
+                <button class="them-vat-tu btn btn-info" style="color: white;" onclick="render_nhap()">Thêm vật tư
+
+                </button>
+              </div>
+              <div>
+                <table style="table-layout: auto;" class="table-phieu-nhap table "
+                id="render-nhap">
+                  <thead>
+                    <tr>
+                      <th style="width: 40%">Tên vật tư</th>
+                      <th style="width: 30%;">Số lượng</th>
+                      <th>Hành động</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                     
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="mt-5">
+                <label>Tên phiếu yêu cầu: </label>
+                <input style="width: 68.3%;"  type="text" id="name-phieu-nhap-kho">
+              </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+                  <button onclick="add()" type="button" data-bs-dismiss="modal" class="nhap-phieu-kho btn btn-info" >Gửi</button>
+                </div>
+          </div>
       </div>
     </div>
   </body>

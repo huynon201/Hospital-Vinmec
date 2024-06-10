@@ -507,3 +507,11 @@ option {
 option:hover, .active,  #vat-tu-dropdown > option:hover, .active {
   background-color: #ECECEC;
 }
+.fi-phong-ban-nhan, .fi-nhan-vien-nhan {
+  width: 69.5%;
+  display: inline-block;
+  margin-left: 17px;
+}
+.fi-nhan-vien-nhan{
+  margin-left: 22.5px;
+}
