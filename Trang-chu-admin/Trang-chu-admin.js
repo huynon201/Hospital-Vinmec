@@ -118,10 +118,84 @@ function updateData() {
   });
 }
 
-// Cập nhật dữ liệu ngay khi trang được tải
-document.addEventListener('DOMContentLoaded', (event) => {
+function initializeData() {
+  var vatTuData = localStorage.getItem("vatTuData");
+  if (!vatTuData) return; // Kiểm tra xem có dữ liệu không
+
+  var vatTuArray = JSON.parse(vatTuData);
+
+  // Lấy phần tử cha chứa các thẻ card
+  var columnSupplies = document.querySelector('.colum-supplies');
+  columnSupplies.innerHTML = ''; // Xóa nội dung hiện tại để tránh trùng lặp
+
+  // Xóa các modal hiện tại để tránh trùng lặp
+  document.querySelectorAll('.modal').forEach(function (modal) {
+    modal.remove();
+  });
+
+  vatTuArray.forEach(function (item) {
+    var cardHTML = `
+      <div class="card col" data-bs-toggle="modal" data-bs-target="#modal-${item.id}">
+        <img class="card-img-top" src="${item.anhVatTu}" alt="" />
+        <div class="card-body">
+          <h4 class="card-title">${item.tenVatTu}</h4>
+        </div>
+        <div class="icon-shopping">
+          <i class="bx bxs-shopping-bag"></i>
+          <p class="number-vat-tu" data-name="${item.tenVatTu}">${item.soLuong}</p>
+        </div>
+      </div>
+    `;
+
+    var modalHTML = `
+      <div class="modal fade" id="modal-${item.id}">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="row">
+              <div class="col-sm-6">
+                <img style="object-fit: cover" class="w-100 h-100" src="${item.anhVatTu}" alt="" />
+              </div>
+              <!-- Modal Header -->
+              <div class="col-sm-6">
+                <div class="modal-header d-flex justify-content-center align-items-center text-center">
+                  <h4 class="modal-title w-100">${item.tenVatTu}</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <p>Mô tả</p>
+                  <p>${item.moTa}</p>
+                  <p>Danh mục</p>
+                  <p>${item.tenDanhMuc}</p>
+                  <p>Thương hiệu</p>
+                  <p>${item.thuongHieu}</p>
+                  <p>Màu</p>
+                  <p>${item.mauSac}</p>
+                  <p>Số lượng</p>
+                  <p class="number-vat-tu" data-name="${item.tenVatTu}">${item.soLuong}</p>
+                  <p>Kích thước</p>
+                  <p>${item.kichThuoc}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    columnSupplies.insertAdjacentHTML('beforeend', cardHTML);
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+  });
+
+  // Update the number of supplies immediately after initializing
   updateData();
+}
+
+// Initialize data when the page is loaded
+document.addEventListener('DOMContentLoaded', (event) => {
+  initializeData();
 });
 
-// Định kỳ kiểm tra dữ liệu mỗi 1 giây
+// Periodically update only the data every 1 second without re-rendering the elements
 setInterval(updateData, 1000);
