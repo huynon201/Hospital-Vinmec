@@ -202,6 +202,11 @@ function render_nhap() {
       </fieldset>
     </td>
     <td>
+
+    <input id="nguoi-yeu-cau-input" type="text">
+
+    </td>
+    <td>
       <input id="so-luong-input" type="number" value="1" min="1">
     </td>
     <td>
@@ -244,17 +249,19 @@ function add() {
 
   const vatTuInput = document.getElementById("vat-tu-input");
   const soLuongInput = document.getElementById("so-luong-input");
-
+  const nguoiYcInput = document.getElementById("nguoi-yeu-cau-input");
   const newItem = {
     id: Date.now(),
     tenVatTu: vatTuInput.value,
     soLuong: soLuongInput.value,
+    nguoiDung: nguoiYcInput.value,
   };
 
   dataPb.push(newItem);
   saveData();
   tenPhongBanInput.value = "";
   moTaPbInput.value = "";
+  nguoiYcInput.value = "";
 }
 document.addEventListener('DOMContentLoaded', function() {
   initializeData();

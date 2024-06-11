@@ -1,0 +1,14 @@
+Cách đăng nhâp phía admin
+Bước 1: vào folder Trang-chu
+Bước 2: vào file Trang-chu.html
+Bước 3: ấn đăng nhập
+Tài khoản: admin
+Mật Khẩu: Admin@123
+
+
+Cách đăng nhâp phía người dùng
+Bước 1: vào folder Trang-chu
+Bước 2: vào file Trang-chu.html
+Bước 3: ấn đăng nhập
+Tài khoản: TaiKhoan1
+Mật Khẩu: TaiKhoan1@
