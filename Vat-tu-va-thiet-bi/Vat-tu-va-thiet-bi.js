@@ -703,13 +703,102 @@ function saveInputData() {
 
 // Sử dụng ví dụ: Gọi hàm này khi nhấn nút với id="importButton"
 document
-  .getElementById("importButton")
+  .getElementById("exportButton")
   .addEventListener("click", saveInputData);
+
+// Sử dụng ví dụ: Gọi hàm này khi nhấn nút với id="importButton"
+// document
+//   .getElementById("importButton")
+//   .addEventListener("click", saveInputData);
+
+
+
+function saveOutputData() {
+  // Lấy dữ liệu imData hiện tại từ localStorage, nếu có
+  let imData = JSON.parse(localStorage.getItem("imData")) || [];
+
+  // Chọn tất cả các input có id="vat-tu-input" và "soLuongVatTuNhap"
+  const vatTuInputElements = document.querySelectorAll("#vat-tu-input");
+  const soLuongInputElements = document.querySelectorAll("#so-luong-output");
+  const tenPhieuXuatKho = document.querySelector("#name-phieu-xuat-kho"); // Sử dụng querySelector để lấy một phần tử duy nhất
+  const tenPhongBanNhan = document.querySelector("#phong-ban-nhan"); // Sử dụng querySelector để lấy một phần tử duy nhất
+  const tenNhanVienNhan = document.querySelector("#nhan-vien-nhan"); // Sử dụng querySelector để lấy một phần tử duy nhất
+  const ngayNhap = getCurrentDate();
+
+  // Kiểm tra xem có phần tử #name-phieu-nhap-kho không
+  if (tenPhieuXuatKho) {
+    // Duyệt qua tất cả các input và lưu dữ liệu vào exData
+    vatTuInputElements.forEach((vatTuInput, index) => {
+      const vatTuValue = vatTuInput.value;
+      const soLuongValue = soLuongInputElements[index].value;
+      const ngayNhapValue = ngayNhap;
+      const tenPhieuXuatKhoValue = tenPhieuXuatKho.value; // Lấy giá trị từ phần tử duy nhất
+      const tenPhongBanNhanValue = tenPhongBanNhan.value;
+      const tenNhanVienNhanValue = tenNhanVienNhan.value
+      const idValue = Date.now();
+      imData.push({
+        id: idValue,
+        vatTu: vatTuValue,
+        soLuong: soLuongValue,
+        ngayNhap: ngayNhapValue,
+        tenPhieuXuat: tenPhieuXuatKhoValue,
+        tenPhongBan: tenPhongBanNhanValue,
+        tenNhanVien: tenNhanVienNhanValue
+      });
+    });
+  } else {
+    console.error("Không tìm thấy phần tử có id là 'name-phieu-nhap-kho'");
+  }
+
+  // Lưu dữ liệu vào localStorage
+  localStorage.setItem("imData", JSON.stringify(imData));
+
+  // Hiển thị thông báo nhập hàng thành công
+  const alertDiv = document.createElement("div");
+  alertDiv.classList.add(
+    "alert",
+    "alert-success",
+    "alert-dismissible",
+    "fade",
+    "show",
+    "alert-container"
+  );
+  alertDiv.setAttribute("role", "alert");
+  alertDiv.innerHTML = `
+    Nhập hàng thành công! 
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+`;
+
+  // Thêm thông báo vào container ở đầu trang
+  const alertContainer = document.getElementById("alert-container");
+  alertContainer.appendChild(alertDiv);
+
+  // Thêm sự kiện click cho nút đóng thông báo
+  const closeButton = alertDiv.querySelector(".btn-close");
+  closeButton.addEventListener("click", function () {
+    alertDiv.remove();
+  });
+
+  // Tự động tắt thông báo sau 3 giây
+  setTimeout(function () {
+    alertDiv.remove();
+  }, 3000); // Thời gian chờ 3 giây để người dùng có thể nhìn thấy thông báo
+
+  // Kiểm tra xem phần tử alertDiv có được thêm vào DOM hay không
+  console.log("Alert div added:", alertContainer.contains(alertDiv));
+}
+
+// Sử dụng ví dụ: Gọi hàm này khi nhấn nút với id="importButton"
+
 
 // Sử dụng ví dụ: Gọi hàm này khi nhấn nút với id="importButton"
 document
   .getElementById("importButton")
-  .addEventListener("click", saveInputData);
+  .addEventListener("click", saveOutputData);
+
+
+
+
 
 const inputPhongBan = document.getElementById("phong-ban-nhan");
 const brPhongBanNhan = document.getElementById("br-phong-ban-nhan");
