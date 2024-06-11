@@ -37,9 +37,7 @@
     <link rel="stylesheet" href="Vat-tu-va-thiet-bi.css" />
     <script src="Vat-tu-va-thiet-bi.js" defer></script>
     <style>
-
       #alert-container {
-
         position: fixed;
 
         top: 0;
@@ -51,9 +49,7 @@
         z-index: 1000;
 
         width: auto; /* Tự động điều chỉnh kích thước dựa trên nội dung */
-
       }
-
     </style>
   </head>
   <body>
@@ -204,20 +200,20 @@
                 </div>
                 <button class="btn btn-outline-info ms-1">Search</button>
               </form>
-              <button
-                id="YeuCau"
-                type="button"
-                class="btn"
-                data-bs-toggle="modal"
-                data-bs-target="#modal-Yc"
-                style="
-                  margin-left: 480px;
-                  height: 46px;
-                  background-color: #a5f3fc;
-                "
-              >
-                Yêu cầu <span id="badge-count" class="badge bg-danger">0</span>
-              </button>
+            <button
+              id="YeuCau"
+              type="button"
+              class="btn btn-out"
+              data-bs-toggle="modal"
+              data-bs-target="#modal-Yc"
+              style="
+                margin-left: 480px;
+                height: 46px;
+                background-color: #a5f3fc;
+              "
+            >
+              Yêu cầu <span id="badge-count" class="badge bg-danger">0</span>
+            </button>
             </div>
             <button class="btn-out btn btn-outline-danger">
               <a class="btn" href="../Trang-chu/Trang-chu.html">Đăng xuất</a>
@@ -316,7 +312,8 @@
                     style="width: 100px"
                     type="number"
                     autocomplete="off"
-                    value="0"
+                    value="1"
+                    min="1"
                   />
                 </div>
                 <div class="modal-footer">
@@ -523,7 +520,7 @@
                 <th>Kích thước</th>
                 <th>Danh mục</th>
                 <th>Ảnh</th>
-                <th>Hành động</th>
+                <th style="width: 11%">Hành động</th>
               </tr>
             </thead>
             <tbody>

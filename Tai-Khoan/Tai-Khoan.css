@@ -356,7 +356,11 @@ body {
   right: 0;
   width: 1px;
   height: 50%;
-  background-color: rgb(182, 169, 153);
+  background-color: rgb(219, 200, 176);
+}
+
+.table th:last-child::after {
+  content: none;
 }
 .table th:first-child {
   border-top-left-radius: 10px;

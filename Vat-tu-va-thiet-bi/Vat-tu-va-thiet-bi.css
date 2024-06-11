@@ -162,6 +162,7 @@ body {
 }
 
 .navbar {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -230,6 +231,20 @@ body {
   white-space: nowrap;
   margin-left: 3px;
 }
+#YeuCau {
+  white-space: nowrap;
+  position: absolute;
+  right: 160px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media screen and (max-width: 1050px) {
+  .btn-out, #YeuCau {
+    display: none;
+  }
+}
+
 /* Responsive */
 @media screen and (max-width: 800px) {
   .sidebar {
@@ -260,6 +275,7 @@ body {
     display: none;
   }
 }
+
 .sidebar .menu-item {
   padding: 0 !important;
 }
@@ -344,8 +360,6 @@ body {
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
-
-
 .table th {
   position: relative;
   border-right: none;
@@ -389,7 +403,8 @@ body {
   color: #1ecbe1;
 }
 .modal-body input,
-textarea, fieldset {
+textarea,
+fieldset {
   width: 98%;
   min-height: 32px;
   border-radius: 5px;
@@ -423,7 +438,6 @@ textarea, fieldset {
   text-align: center;
   background-color: #faf1f16c;
   cursor: pointer;
-
 }
 .upload-btn-wrapper input[type="file"] {
   font-size: 100px;
@@ -442,7 +456,6 @@ input[type="search"] {
   width: 100%;
   outline: none;
   border-radius: 5px;
-
 }
 
 #browsers {
@@ -467,7 +480,6 @@ option {
   cursor: pointer;
 }
 
-
 .modal-body > p {
   margin: 10px 0px;
 }
@@ -486,7 +498,7 @@ option {
   padding: 0;
 }
 
-#vat-tu-dropdown{
+#vat-tu-dropdown {
   position: absolute;
   background-color: white;
   border: 1px solid #4096fe;
@@ -507,14 +519,18 @@ option {
   cursor: pointer;
 }
 
-option:hover, .active,  #vat-tu-dropdown > option:hover, .active {
-  background-color: #ECECEC;
+option:hover,
+.active,
+#vat-tu-dropdown > option:hover,
+.active {
+  background-color: #ececec;
 }
-.fi-phong-ban-nhan, .fi-nhan-vien-nhan {
+.fi-phong-ban-nhan,
+.fi-nhan-vien-nhan {
   width: 69.5%;
   display: inline-block;
   margin-left: 17px;
 }
-.fi-nhan-vien-nhan{
+.fi-nhan-vien-nhan {
   margin-left: 22.5px;
 }
