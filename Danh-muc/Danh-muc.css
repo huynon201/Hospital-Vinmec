@@ -159,6 +159,7 @@ body {
 .sidebar-profile .email {
   font-size: 15px;
   color: #333;
+  font-weight: bold;
 }
 
 .navbar {
@@ -403,4 +404,48 @@ textarea {
   color: white;
   font-size: 20px;
   width: 100px;
+}
+.popover-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* .popover-heading span {
+  margin-left: 8px;
+} */
+.popover-body {
+  display: flex;
+  justify-content: space-between;
+}
+.popover-content {
+  /* padding: 10px; */
+  width: 200px;
+  height: 60px;
+  text-align: center;
+}
+.popover-body {
+  /* padding-top: 10px; */
+}
+.popover-body button {
+  /* margin: 0 5px; */
+}
+#confirmDelete .popover-body button {
+  width: 40px;
+  height: 30px;
+  padding: 0; /* Loại bỏ padding để giữ kích thước nút */
+  font-size: 10px; /* Điều chỉnh kích thước chữ nếu cần */
+  line-height: 20px; /* Canh chỉnh vị trí chữ bên trong nút */
+}
+#alert-container {
+  position: fixed;
+
+  top: 0;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  z-index: 1000;
+
+  width: auto; /* Tự động điều chỉnh kích thước dựa trên nội dung */
 }

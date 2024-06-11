@@ -159,6 +159,7 @@ body {
 .sidebar-profile .email {
   font-size: 15px;
   color: #333;
+  font-weight: bold;
 }
 
 .navbar {

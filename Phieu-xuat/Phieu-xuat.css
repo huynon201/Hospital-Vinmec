@@ -159,6 +159,7 @@
   .sidebar-profile .email {
     font-size: 15px;
     color: #333;
+    font-weight: bold;
   }
   
   .navbar {
@@ -334,7 +335,7 @@
   }
   .table-danh-muc {
     width: 100%;
-    margin: 40px 0px;
+    margin: 15px 0px;
     padding: 10px;
     text-align: center;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,

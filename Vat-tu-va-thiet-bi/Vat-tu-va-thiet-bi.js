@@ -230,6 +230,50 @@ if (data.length === 0) {
       tenDanhMuc: "Vật dụng y tế",
       anhVatTu: "../Assets/content/supplies/ao-phau-thuat.png",
     },
+    {
+      id: Date.now() + 4,
+      tenVatTu: "Máy Hiển Vi",
+      moTa: "Máy công nghệ cao dùng để soi vật nhỏ",
+      soLuong: "1",
+      thuongHieu: "borgh",
+      mauSac: "Trắng",
+      kichThuoc: "40cm",
+      tenDanhMuc: "Thiết bị y tế",
+      anhVatTu: "../Assets/content/supplies/may-hien-vi.png",
+    },
+    {
+      id: Date.now() + 5,
+      tenVatTu: "Thuốc Giảm Đau",
+      moTa: "Thuốc điều trị giảm đau",
+      soLuong: "1",
+      thuongHieu: "Panadol",
+      mauSac: "Đỏ",
+      kichThuoc: "12mg",
+      tenDanhMuc: "Thiết bị y tế",
+      anhVatTu: "../Assets/content/supplies/thuoc-giam-dau.png",
+    },
+    {
+      id: Date.now() + 6,
+      tenVatTu: "Băng Cá Nhân",
+      moTa: "Băng dán vết thương",
+      soLuong: "1",
+      thuongHieu: "kemsre",
+      mauSac: "Nâu",
+      kichThuoc: "4cm",
+      tenDanhMuc: "Vật dụng y tế",
+      anhVatTu: "../Assets/content/supplies/bang-ca-nhan.png",
+    },
+    {
+      id: Date.now() + 6,
+      tenVatTu: "Găng tay phẫu thuật",
+      moTa: "Găng tay đã được tuyệt trùng",
+      soLuong: "1",
+      thuongHieu: "emswre",
+      mauSac: "xanh",
+      kichThuoc: "15cm",
+      tenDanhMuc: "Vật dụng y tế",
+      anhVatTu: "../Assets/content/supplies/gang-tay.png",
+    },
   ];
   saveData();
 }
@@ -252,12 +296,58 @@ function render() {
       <td><img style="height: 50px; width: 50px;" src="${item.anhVatTu}"></td>
       <td>
         <button onclick="editItem(${index})" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal-tao">Sửa</button>
-        <button onclick="deleteItem(${index})" class="btn btn-danger">Xóa</button>
+        <button class="xoa btn btn-danger" data-index="${index}">Xóa</button>
       </td>
     `;
     tbody.appendChild(row);
   });
+  attachDeleteListeners();
 }
+function attachDeleteListeners() {
+  document.querySelectorAll(".xoa").forEach(button => {
+      button.addEventListener("click", function () {
+          // Check if there's an existing popover and remove it
+          const existingPopover = document.querySelector(".popover");
+          if (existingPopover) {
+              existingPopover.remove();
+          }
+
+          const index = this.getAttribute("data-index");
+          const popoverContent = document.getElementById("confirmDelete").cloneNode(true);
+          popoverContent.classList.remove("d-none");
+          document.body.appendChild(popoverContent);
+
+          const popover = new bootstrap.Popover(this, {
+              content: popoverContent,
+              html: true,
+              placement: "top",
+              trigger: "focus",
+          });
+          popover.show();
+
+          // Remove previous event listeners to prevent multiple triggers
+          popoverContent.querySelector(".xoa-real").removeEventListener("click", handleDelete);
+          popoverContent.querySelector(".cancel").removeEventListener("click", handleCancel);
+
+          // Handle the deletion
+          function handleDelete() {
+              deleteItem(index);
+              popoverContent.remove();
+              render();
+          }
+
+          // Handle cancellation
+          function handleCancel() {
+              popoverContent.remove();
+          }
+
+          popoverContent.querySelector(".xoa-real").addEventListener("click", handleDelete);
+          popoverContent.querySelector(".cancel").addEventListener("click", handleCancel);
+          
+      });
+  });
+}
+
 
 function addOrEdit() {
   const tenVatTuInput = document.getElementById("ten-vat-tu");
@@ -323,6 +413,40 @@ function addOrEdit() {
   const addBtn = document.querySelector(".modal-footer .btn-info");
   addBtn.textContent = "Tạo";
   addBtn.onclick = addOrEdit;
+
+
+  const alertDiv = document.createElement("div");
+  alertDiv.classList.add(
+    "alert",
+    "alert-success",
+    "alert-dismissible",
+    "fade",
+    "show",
+    "alert-container"
+  );
+  alertDiv.setAttribute("role", "alert");
+  alertDiv.innerHTML = `
+    Tạo vật tư mới thành công! 
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+`;
+
+  // Thêm thông báo vào container ở đầu trang
+  const alertContainer = document.getElementById("alert-container");
+  alertContainer.appendChild(alertDiv);
+
+  // Thêm sự kiện click cho nút đóng thông báo
+  const closeButton = alertDiv.querySelector(".btn-close");
+  closeButton.addEventListener("click", function () {
+    alertDiv.remove();
+  });
+
+  // Tự động tắt thông báo sau 3 giây
+  setTimeout(function () {
+    alertDiv.remove();
+  }, 3000); // Thời gian chờ 3 giây để người dùng có thể nhìn thấy thông báo
+
+  // Kiểm tra xem phần tử alertDiv có được thêm vào DOM hay không
+  console.log("Alert div added:", alertContainer.contains(alertDiv));
 }
 
 function editItem(index) {
@@ -765,7 +889,7 @@ function saveOutputData() {
   );
   alertDiv.setAttribute("role", "alert");
   alertDiv.innerHTML = `
-    Nhập hàng thành công! 
+    Xuất hàng thành công! 
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 `;
 

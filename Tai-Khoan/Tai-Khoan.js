@@ -109,8 +109,8 @@ function saveData() {
 // Initialize default data if localStorage is empty
 if (data.length === 0) {
   data = [
-    { id: Date.now(), tenDangNhap: "TaiKhoan1", matKhau: "Cong27032003@", diaChi:"Hà Nội", soDienThoai: "0335393056", vaiTro: "Nhân viên"},
-    { id: Date.now() + 1, tenDangNhap: "TaiKhoan2", matKhau: "Cong27032003@", diaChi:"Hà Nội", soDienThoai: "0876767036", vaiTro: "Nhân viên"}
+    { id: Date.now(), tenDangNhap: "TaiKhoan1", matKhau: "TaiKhoan1@", diaChi:"Hà Nội", soDienThoai: "0335393056", vaiTro: "Nhân viên"},
+    { id: Date.now() + 1, tenDangNhap: "TaiKhoan2", matKhau: "TaiKhoan2@", diaChi:"Hà Nội", soDienThoai: "0876767036", vaiTro: "Bác sĩ phụ khoa"}
   ];
   saveData();
 }

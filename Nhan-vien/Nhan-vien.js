@@ -184,8 +184,9 @@ function saveData() {
 // Initialize default data if localStorage is empty
 if (data.length === 0) {
   data = [
-    { id: Date.now(), tenNhanVien: "Nhân viên 1", phongBan: "Phong ban 1", moTa: "Mô tả nhân viên 1" },
-    { id: Date.now() + 1, tenNhanVien: "Nhân viên 2", phongBan: "Phong ban 2", moTa: "Mô tả nhân viên 2" }
+    { id: Date.now(), tenNhanVien: "Nguyễn Huy Đạt", phongBan:  "Kế hoạch tổng hợp", moTa: "Mô tả nhân viên 1" },
+    { id: Date.now() + 1, tenNhanVien: "Quách Thành Công", phongBan: "Điều dưỡng", moTa: "Mô tả nhân viên 2" },
+    { id: Date.now() + 2, tenNhanVien: "Vũ Đức Doanh", phongBan: "Tài chính", moTa: "Mô tả nhân viên 2" }
   ];
   saveData();
 }

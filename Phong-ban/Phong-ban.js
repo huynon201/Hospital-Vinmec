@@ -94,8 +94,9 @@ function saveData() {
 // Initialize default data if localStorage is empty
 if (dataPb.length === 0) {
   dataPb = [
-    { id: Date.now(), tenPhongBan: "Phòng ban 1", moTaPb: "Mô tả phòng ban 1" },
-    { id: Date.now() + 1, tenPhongBan: "Phòng ban 2", moTaPb: "Mô tả phòng ban 2" }
+    { id: Date.now(), tenPhongBan: "Kế hoạch tổng hợp", moTaPb: "Phụ trách lên kế hoạch" },
+    { id: Date.now() + 1, tenPhongBan: "Điều dưỡng", moTaPb: "Chăm sóc bệnh nhân" },
+    { id: Date.now() + 2, tenPhongBan: "Tài chính", moTaPb: "Quản lí tài chính bệnh viện" }
   ];
   saveData();
 }

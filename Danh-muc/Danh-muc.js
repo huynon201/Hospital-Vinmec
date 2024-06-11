@@ -111,13 +111,57 @@ function render() {
       <td>${item.moTa}</td>
       <td>
         <button onclick="editItem(${index})" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#myModal">Sửa</button>
-        <button onclick="deleteItem(${index})" class="btn btn-danger">Xóa</button>
+        <button class="xoa btn btn-danger" data-index="${index}">Xóa</button>
       </td>
     `;
     tbody.appendChild(row);
   });
+  attachDeleteListeners();
 }
+function attachDeleteListeners() {
+  document.querySelectorAll(".xoa").forEach(button => {
+      button.addEventListener("click", function () {
+          // Check if there's an existing popover and remove it
+          const existingPopover = document.querySelector(".popover");
+          if (existingPopover) {
+              existingPopover.remove();
+          }
 
+          const index = this.getAttribute("data-index");
+          const popoverContent = document.getElementById("confirmDelete").cloneNode(true);
+          popoverContent.classList.remove("d-none");
+          document.body.appendChild(popoverContent);
+
+          const popover = new bootstrap.Popover(this, {
+              content: popoverContent,
+              html: true,
+              placement: "top",
+              trigger: "focus",
+          });
+          popover.show();
+
+          // Remove previous event listeners to prevent multiple triggers
+          popoverContent.querySelector(".xoa-real").removeEventListener("click", handleDelete);
+          popoverContent.querySelector(".cancel").removeEventListener("click", handleCancel);
+
+          // Handle the deletion
+          function handleDelete() {
+              deleteItem(index);
+              popoverContent.remove();
+              render();
+          }
+
+          // Handle cancellation
+          function handleCancel() {
+              popoverContent.remove();
+          }
+
+          popoverContent.querySelector(".xoa-real").addEventListener("click", handleDelete);
+          popoverContent.querySelector(".cancel").addEventListener("click", handleCancel);
+          
+      });
+  });
+}
 function add() {
   const tenDanhMucInput = document.getElementById("ten-danh-muc");
   const moTaInput = document.getElementById("mo-ta");
@@ -133,6 +177,38 @@ function add() {
   tenDanhMucInput.value = "";
   moTaInput.value = "";
   render();
+  const alertDiv = document.createElement("div");
+  alertDiv.classList.add(
+    "alert",
+    "alert-success",
+    "alert-dismissible",
+    "fade",
+    "show",
+    "alert-container"
+  );
+  alertDiv.setAttribute("role", "alert");
+  alertDiv.innerHTML = `
+    Tạo danh mục mới thành công! 
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+`;
+
+  // Thêm thông báo vào container ở đầu trang
+  const alertContainer = document.getElementById("alert-container");
+  alertContainer.appendChild(alertDiv);
+
+  // Thêm sự kiện click cho nút đóng thông báo
+  const closeButton = alertDiv.querySelector(".btn-close");
+  closeButton.addEventListener("click", function () {
+    alertDiv.remove();
+  });
+
+  // Tự động tắt thông báo sau 3 giây
+  setTimeout(function () {
+    alertDiv.remove();
+  }, 3000); // Thời gian chờ 3 giây để người dùng có thể nhìn thấy thông báo
+
+  // Kiểm tra xem phần tử alertDiv có được thêm vào DOM hay không
+  console.log("Alert div added:", alertContainer.contains(alertDiv));
 }
 
 function editItem(index) {
@@ -159,6 +235,7 @@ function editItem(index) {
     };
     $("#myModal").modal("show");
   }
+  
 }
 
 function deleteItem(index) {

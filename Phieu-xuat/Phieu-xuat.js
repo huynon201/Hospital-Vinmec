@@ -90,7 +90,13 @@ let currentEditIndex = null;
 function saveData() {
   localStorage.setItem("imData", JSON.stringify(data));
 }
-
+if (data.length === 0) {
+  data = [
+    { id: Date.now(), vatTu: "Kim tiêm", soLuong: "1", ngayNhap: "06/6/2024", tenPhieuXuat: "Đạt nhận kim tiêm", tenNhanVien: "Nguyễn Huy Đạt", tenPhongBan: "Kế hoạch tổng hợp" },
+    { id: Date.now() + 1, vatTu: "Khẩu trang", soLuong: "1", ngayNhap: "03/6/2024", tenPhieuXuat: "Doanh nhận  khẩu trang", tenNhanVien: "Vũ Đức Doanh", tenPhongBan: "Tài chính" }
+  ];
+  saveData();
+}
 // Hàm tạo id duy nhất
 function generateRandomID() {
   return Math.floor(Math.random() * 1000000);

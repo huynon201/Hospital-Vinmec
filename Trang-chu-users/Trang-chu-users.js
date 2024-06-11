@@ -86,126 +86,6 @@ sidebarCloseBtn.addEventListener("click", toggleSidebar);
 // Initial call to handle resize
 handleResize();
 
-document.addEventListener('DOMContentLoaded', function() {
-  initializeData();
-  attachSearchEvent();
-});
-
-function attachSearchEvent() {
-  document.getElementById('search-box').addEventListener('input', function() {
-      var searchTerm = this.value.toLowerCase();
-      var cards = document.querySelectorAll('.card.col');
-
-      cards.forEach(function(card) {
-          var cardTitle = card.querySelector('.card-title').innerText.toLowerCase();
-          if (cardTitle.includes(searchTerm)) {
-              card.style.display = '';
-          } else {
-              card.style.display = 'none';
-          }
-      });
-  });
-}
-
-function initializeData() {
-  var vatTuData = localStorage.getItem("vatTuData");
-  if (!vatTuData) return;
-
-  var vatTuArray = JSON.parse(vatTuData);
-  var columnSupplies = document.querySelector('.colum-supplies');
-  columnSupplies.innerHTML = '';
-
-  document.querySelectorAll('.modal').forEach(function(modal) {
-      modal.remove();
-  });
-
-  vatTuArray.forEach(function(item) {
-      var cardHTML = `
-          <div class="card col" data-bs-toggle="modal" data-bs-target="#modal-${item.id}">
-              <img class="card-img-top" src="${item.anhVatTu}" alt="" />
-              <div class="card-body">
-                  <h4 class="card-title">${item.tenVatTu}</h4>
-              </div>
-              <div class="icon-shopping">
-                  <i class="bx bxs-shopping-bag"></i>
-                  <p class="number-vat-tu" data-name="${item.tenVatTu}">${item.soLuong}</p>
-              </div>
-          </div>
-      `;
-
-      var modalHTML = `
-          <div class="modal fade" id="modal-${item.id}">
-              <div class="modal-dialog modal-dialog-centered modal-lg">
-                  <div class="modal-content">
-                      <div class="row">
-                          <div class="col-sm-6">
-                              <img style="object-fit: cover" class="w-100 h-100" src="${item.anhVatTu}" alt="" />
-                          </div>
-                          <div class="col-sm-6">
-                              <div class="modal-header d-flex justify-content-center align-items-center text-center">
-                                  <h4 class="modal-title w-100">${item.tenVatTu}</h4>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                              </div>
-                              <div class="modal-body">
-                                  <p>Mô tả</p>
-                                  <p>${item.moTa}</p>
-                                  <p>Danh mục</p>
-                                  <p>${item.tenDanhMuc}</p>
-                                  <p>Thương hiệu</p>
-                                  <p>${item.thuongHieu}</p>
-                                  <p>Màu</p>
-                                  <p>${item.mauSac}</p>
-                                  <p>Số lượng</p>
-                                  <p class="number-vat-tu" data-name="${item.tenVatTu}">${item.soLuong}</p>
-                                  <p>Kích thước</p>
-                                  <p>${item.kichThuoc}</p>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      `;
-
-      columnSupplies.insertAdjacentHTML('beforeend', cardHTML);
-      document.body.insertAdjacentHTML('beforeend', modalHTML);
-  });
-
-  // Gán lại sự kiện click cho các thẻ sau khi khởi tạo dữ liệu
-  // document.querySelectorAll('.card.col').forEach(function(card) {
-  //     card.addEventListener('click', function() {
-  //         var modalId = card.getAttribute('data-bs-target');
-  //         var myModal = new bootstrap.Modal(document.getElementById(modalId.replace('#', '')));
-  //         myModal.show();
-  //     });
-  // });
-
-  updateData();
-}
-
-function updateData() {
-  var vatTuData = localStorage.getItem("vatTuData");
-  if (!vatTuData) return;
-
-  var vatTuArray = JSON.parse(vatTuData);
-  var soLuongVatTu = {};
-
-  vatTuArray.forEach(function(item) {
-      soLuongVatTu[item.tenVatTu] = parseInt(item.soLuong);
-  });
-
-  var numberVatTuElements = document.querySelectorAll('.number-vat-tu');
-
-  numberVatTuElements.forEach(function(element) {
-      var tenVatTu = element.getAttribute('data-name');
-      if (soLuongVatTu[tenVatTu] !== undefined) {
-          element.innerText = soLuongVatTu[tenVatTu];
-      } else {
-          element.innerText = 0;
-      }
-  });
-}
-
 
 const loginModal = document.getElementById('loginModal');
 const openLoginButton = document.getElementById('openLogin');
@@ -339,6 +219,22 @@ function render_nhap() {
   updateVatTuDropdowns();
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+  // Existing code...
+  // Function to clear the table with id "render-nhap"
+  function clearTable() {
+    const tableBody = document.querySelector("#render-nhap tbody");
+    tableBody.innerHTML = ""; // Clear the table body content
+  }
+
+  // Attach the function to the "Nhập" button click event
+  document
+    .querySelector(".nhap-phieu-kho")
+    .addEventListener("click", clearTable);
+  // Other existing JavaScript code...
+});
+
+
 let dataPb = JSON.parse(localStorage.getItem('YeuCauData')) || [];
 
 function saveData() {
@@ -360,3 +256,115 @@ function add() {
   tenPhongBanInput.value = "";
   moTaPbInput.value = "";
 }
+document.addEventListener('DOMContentLoaded', function() {
+  initializeData();
+  attachSearchEvent();
+});
+
+function attachSearchEvent() {
+  document.getElementById('search-box').addEventListener('input', function() {
+      var searchTerm = this.value.toLowerCase();
+      var cards = document.querySelectorAll('.card.col');
+
+      cards.forEach(function(card) {
+          var cardTitle = card.querySelector('.card-title').innerText.toLowerCase();
+          if (cardTitle.includes(searchTerm)) {
+              card.style.display = '';
+          } else {
+              card.style.display = 'none';
+          }
+      });
+  });
+}
+
+function initializeData() {
+  var vatTuData = localStorage.getItem("vatTuData");
+  if (!vatTuData) return;
+
+  var vatTuArray = JSON.parse(vatTuData);
+  var columnSupplies = document.querySelector('.colum-supplies');
+  columnSupplies.innerHTML = '';
+
+  // document.querySelectorAll('.modal').forEach(function(modal) {
+  //     modal.remove();
+  // });
+
+  vatTuArray.forEach(function(item) {
+      var cardHTML = `
+          <div class="card col" data-bs-toggle="modal" data-bs-target="#modal-${item.id}">
+              <img class="card-img-top" src="${item.anhVatTu}" alt="" />
+              <div class="card-body">
+                  <h4 class="card-title">${item.tenVatTu}</h4>
+              </div>
+              <div class="icon-shopping">
+                  <i class="bx bxs-shopping-bag"></i>
+                  <p class="number-vat-tu" data-name="${item.tenVatTu}">${item.soLuong}</p>
+              </div>
+          </div>
+      `;
+
+      var modalHTML = `
+          <div class="modal fade" id="modal-${item.id}">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                  <div class="modal-content">
+                      <div class="row">
+                          <div class="col-sm-6">
+                              <img style="object-fit: cover" class="w-100 h-100" src="${item.anhVatTu}" alt="" />
+                          </div>
+                          <div class="col-sm-6">
+                              <div class="modal-header d-flex justify-content-center align-items-center text-center">
+                                  <h4 class="modal-title w-100">${item.tenVatTu}</h4>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                              </div>
+                              <div class="modal-body">
+                                  <p>Mô tả</p>
+                                  <p>${item.moTa}</p>
+                                  <p>Danh mục</p>
+                                  <p>${item.tenDanhMuc}</p>
+                                  <p>Thương hiệu</p>
+                                  <p>${item.thuongHieu}</p>
+                                  <p>Màu</p>
+                                  <p>${item.mauSac}</p>
+                                  <p>Số lượng</p>
+                                  <p class="number-vat-tu" data-name="${item.tenVatTu}">${item.soLuong}</p>
+                                  <p>Kích thước</p>
+                                  <p>${item.kichThuoc}</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      `;
+
+      columnSupplies.insertAdjacentHTML('beforeend', cardHTML);
+      document.body.insertAdjacentHTML('beforeend', modalHTML);
+  });
+
+  updateData();
+}
+
+function updateData() {
+  var vatTuData = localStorage.getItem("vatTuData");
+  if (!vatTuData) return;
+
+  var vatTuArray = JSON.parse(vatTuData);
+  var soLuongVatTu = {};
+
+  vatTuArray.forEach(function(item) {
+      soLuongVatTu[item.tenVatTu] = parseInt(item.soLuong);
+  });
+
+  var numberVatTuElements = document.querySelectorAll('.number-vat-tu');
+
+  numberVatTuElements.forEach(function(element) {
+      var tenVatTu = element.getAttribute('data-name');
+      if (soLuongVatTu[tenVatTu] !== undefined) {
+          element.innerText = soLuongVatTu[tenVatTu];
+      } else {
+          element.innerText = 0;
+      }
+  });
+}
+
+
