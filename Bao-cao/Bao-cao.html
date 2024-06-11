@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bệnh viện Vinmec</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="..//Assets/logo/android-icon-192x192.webp"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <style>
+      .form-container {
+          display: flex;
+          margin-top: 50px;
+      }
+      .modal-header .btn-close {
+          position: absolute;
+          right: 10px;
+          top: 10px;
+      }
+      .input-group-text {
+          height: calc(2.25rem + 2px); /* Match the input height */
+          display: flex;
+          align-items: center;
+      }
+      .modal-dialog.custom-modal {
+          max-width: 80%; /* Customize the width as needed */
+      }
+  </style>
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Bao-cao.css" />
+    <script src="Bao-cao.js" defer></script>
+  </head>
+  <body>
+    <div class="row">
+      <div class="colum-sidebar">
+        <nav class="sidebar locked">
+          <div class="logo-items flex">
+            <span class="nav-image">
+              <img
+                src="../Assets/logo/android-icon-192x192.webp"
+                alt="logo_img"
+              />
+            </span>
+            <span class="logo-name">VINMEC</span>
+            <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>
+            <i class="bx bx-x" id="sidebar-close"></i>
+          </div>
+
+          <div class="menu-container">
+            <div class="menu-items">
+              <ul class="menu-item">
+                <div class="menu-title flex">
+                  <span class="title">Dashboard</span>
+                  <span class="line"></span>
+                </div>
+                <li class="item">
+                  <a href="../Trang-chu-admin/Trang-chu-admin.html" class="link flex">
+                    <i class="bx bxs-home"></i>
+                    <span>Trang chủ</span>
+                  </a>
+                </li>
+                <li class="item">
+                  <a href="../Danh-muc/Danh-muc.html" class="link flex">
+                    <i class="bx bxs-grid-alt"></i>
+                    <span>Danh mục</span>
+                  </a>
+                </li>
+              </ul>
+
+              <ul class="menu-item">
+                <div class="menu-title flex">
+                  <span class="title">Editor</span>
+                  <span class="line"></span>
+                </div>
+                <li class="item">
+                  <a href="../Vat-tu-va-thiet-bi/Vat-tu-va-thiet-bi.html" class="link flex">
+                    <i class="bx bxs-data"></i>
+                    <span>Vật tư và thiết bị</span>
+                  </a>
+                </li>
+                <li class="item">
+                  <a href="../Tai-Khoan/Tai-Khoan.html" class="link flex">
+                    <i class="bx bxs-user-circle"></i>
+                    <span>Tài khoản</span>
+                  </a>
+                </li>
+              </ul>
+
+              <ul class="menu-item">
+                <div class="menu-title flex">
+                  <span class="title">Management</span>
+                  <span class="line"></span>
+                </div>
+                <li class="item">
+                  <a href="../Nhan-vien/Nhan-vien.html" class="link flex">
+                    <i class="bx bxs-group"></i>
+                    <span>Nhân viên</span>
+                  </a>
+                </li>
+                <li class="item">
+                  <a href="../Phong-ban/Phong-ban.html" class="link flex">
+                    <i class="bx bxs-building"></i>
+                    <span>Phòng ban</span>
+                  </a>
+                </li>
+              </ul>
+
+              <ul class="menu-item">
+                <div class="menu-title flex">
+                  <span class="title">Document</span>
+                  <span class="line"></span>
+                </div>
+                <li class="item">
+                  <a href="../Phieu-xuat/Phieu-xuat.html" class="link flex">
+                    <i class="bx bxs-archive-out"></i>
+                    <span>Phiếu xuất</span>
+                  </a>
+                </li>
+                <li class="item">
+                  <a href="../Phieu-nhap/Phieu-nhap.html" class="link flex">
+                    <i class="bx bxs-archive-in"></i>
+                    <span>Phiếu nhập</span>
+                  </a>
+                </li>
+                <li class="item  trang-chu">
+                  <a href="#" class="link flex">
+                    <i class="bx bxs-folder-minus"></i>
+                    <span>Báo cáo</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="sidebar-profile flex">
+              <span class="nav-image">
+                <img src="../Assets/logo/avata.avif" alt="logo-img" />
+              </span>
+              <div class="data-text">
+                <span class="name">Nguyễn Huy Đạt</span>
+                <span class="email">Admin</span>
+                <span style="margin-left: 60px;" class="icon-out">
+                  <a href="../Trang-chu/Trang-chu.html">
+                    <i  style="font-size: 25px;" class='btn btn-outline-danger bx bx-log-out'></i>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div class="colum-content">
+        <nav class="navbar navbar-expand-sm bg-light">
+          <div class="container">
+            <div class="nav-left">
+              <i class="bx bx-menu" id="sidebar-open"></i>
+              <a class="navbar-brand" href="#">
+                <span class="nav-image">
+                  <img src="../Assets/logo/avata.avif" alt="" />
+                </span>
+              </a>
+              <form class="d-flex search-form">
+                <div class="search-box-container">
+                  <i class='bx bx-search search-icon'></i>
+                  <input id="search-box"
+                    class="search-box form-control me-2"
+                    type="text"
+                    placeholder="Tìm kiếm vật tư và thiết bị"
+                  />
+                </div>
+                <button class="btn btn-outline-info ms-1">Search</button>
+              </form>
+            </div>
+            <button class="btn-out btn btn-outline-danger">
+              <a class="btn" href="../Trang-chu/Trang-chu.html">Đăng xuất</a>
+            </button>
+          </div>
+        </nav>
+        <div class="colum-title">
+          <p>Báo cáo</p>
+        </div>
+        <div class="container form-container">
+          <form>
+              <div class="form-group">
+                  <label for="dateRange">* Chọn ngày:</label>
+                  <div class="input-group input-daterange">
+                      <input type="text" class="form-control" id="startDate" placeholder="Start Date" value="25/02/2024">
+                      <div class="input-group-addon d-flex align-items-center">→</div>
+                      <input type="text" class="form-control" id="endDate" placeholder="End Date" value="27/02/2024">
+                      <div class="input-group-append">
+                          <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                      </div>
+                  </div>
+              </div>
+              <button type="button" class="btn btn-primary mt-2" id="viewReportBtn">Xem báo cáo</button>
+          </form>
+      </div>
+      
+  
+      <!-- Modal -->
+      <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
+          <div class="modal-dialog custom-modal" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="reportModalLabel">Phiếu báo cáo</h5>
+                      <p id="reportDateRange" style="position: absolute; top: 70px;"></p>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <table class="table-danh-muc table table-hover table">
+                          <thead>
+                              <tr>
+                                  <th>STT</th>
+                                  <th>Mã vật tư</th>
+                                  <th>Tên vật tư</th>
+                                  <th>Số lượng nhập trong kỳ</th>
+                                  <th>Số lượng xuất trong kỳ</th>
+                                  <th>Ngày Nhập/Xuất</th>
+                              </tr>
+                          </thead>
+                          <tbody id="reportTableBody">
+                          </tbody>
+                      </table>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+      <script>
+          $(document).ready(function() {
+    $('.input-daterange').datepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: true,
+        todayHighlight: true
+    });
+
+    // Show datepicker on calendar icon click
+    $('.input-group-text').click(function() {
+        $(this).siblings('input').datepicker('show');
+    });
+
+    // Show modal with report on button click
+    $('#viewReportBtn').click(function() {
+        var startDate = $('#startDate').val();
+        var endDate = $('#endDate').val();
+        $('#reportDateRange').text('Từ ' + startDate + ' đến ' + endDate);
+
+        var vatTuData = JSON.parse(localStorage.getItem('vatTuData')) || [];
+        var exData = JSON.parse(localStorage.getItem('exData')) || [];
+        var imData = JSON.parse(localStorage.getItem('imData')) || [];
+
+        var startDateObj = parseDate(startDate);
+        var endDateObj = parseDate(endDate);
+
+        var baoCao = [];
+        var reportTableBody = $('#reportTableBody');
+        reportTableBody.empty();
+
+        var index = 1;
+        function getVatTuDetails(vatTu) {
+      var matchingVatTu = vatTuData.find(vt => vt.tenVatTu === vatTu || vt.tenVatTu.toString() === vatTu.toString());
+       if (matchingVatTu) {
+        return { tenVatTu: vatTu, soLuong: matchingVatTu.soLuong };
+      } else {
+        return { tenVatTu: vatTu, soLuong: 0 };
+      }
+      }
+
+        function addDataToBaoCao(data, isEx) {
+            data.forEach(function(item) {
+                var details = getVatTuDetails(item.id);
+                var remainingStock = details.soLuong;
+                var soLuongNhap = isEx ? item.soLuong : 0;
+                var soLuongXuat = isEx ? 0 : item.soLuong;
+                baoCao.push({
+                    stt: index,
+                    id: item.id,
+                    tenVatTu: item.vatTu,
+                    soLuongNhap: soLuongNhap,
+                    soLuongXuat: soLuongXuat,
+                    ngayNhapXuat: item.ngayNhap
+                });
+                index++;
+            });
+        }
+
+        addDataToBaoCao(exData.filter(item => {
+            var itemDate = parseDate(item.ngayNhap);
+            return itemDate >= startDateObj && itemDate <= endDateObj;
+        }), true);
+
+        addDataToBaoCao(imData.filter(item => {
+            var itemDate = parseDate(item.ngayNhap);
+            return itemDate >= startDateObj && itemDate <= endDateObj;
+        }), false);
+
+        baoCao.forEach(function(item) {
+            reportTableBody.append(
+                `<tr>
+                    <td>${item.stt}</td>
+                    <td>${item.id}</td>
+                    <td>${item.tenVatTu}</td>
+                    <td>${item.soLuongNhap}</td>
+                    <td>${item.soLuongXuat}</td>
+                    <td>${item.ngayNhapXuat}</td>
+                </tr>`
+            );
+        });
+
+        var reportModal = new bootstrap.Modal(document.getElementById('reportModal'));
+        reportModal.show();
+
+        localStorage.setItem('baoCao', JSON.stringify(baoCao));
+    });
+
+    // Helper function to parse dates in dd/mm/yyyy format
+    function parseDate(dateStr) {
+        var parts = dateStr.split('/');
+        return new Date(parts[2], parts[1] - 1, parts[0]);
+    }
+});
+
+    </script>
+  </body>
+</html>
